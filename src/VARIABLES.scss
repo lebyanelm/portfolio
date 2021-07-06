@@ -1,0 +1,16 @@
+/////// COLORS
+$TEXT_COLOR: #FFFFFF;
+$THEME_COLOR: #2BD700;
+$BACKRGOUND_COLOR: #000000;
+$BACKGROUND_COLOR_LIGHT: transparentize($TEXT_COLOR, .5);
+
+
+//////// SHAPES AND SIZES
+$PADDING: 20px;
+$BORDER: 2px solid $TEXT_COLOR;
+
+
+/////// TYPOGRAPHY
+$PARAGRAPH_FONT_FAMILY: 'Roboto', sans-serif;
+$HEADER_FONT_FAMILY: 'Roboto Mono for Powerline', 'Roboto', sans-serif;
+$LOGOTYPE_FONT_FAMILY: 'ProFont for Powerline', 'Roboto Mono for Powerline', 'Roboto', sans-serif;
