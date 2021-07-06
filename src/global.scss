@@ -30,6 +30,6 @@
 /* Browser and default resets */
 ion-content,
 ion-footer {
-  --background-color: var($BACKRGOUND_COLOR);
-  background: $BACKGROUND_COLOR;
+  --background: #000000 !important;
+  background: #000000 !important;
 }
