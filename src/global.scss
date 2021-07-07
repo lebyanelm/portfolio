@@ -199,3 +199,60 @@ button.no-border::after,
 button ion-icon {
   font-size: 25px;
 }
+
+/* Showcasing of an experiment */
+.experiments {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $PADDING;
+  text-align: left;
+  max-width: 60%;
+}
+
+// Button of the experiment
+.experiments button {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.experiments .load-more {
+  margin-top: $PADDING;
+}
+
+// Placeholder image of the experiment
+.experiments .experiment .experiment-image-container {
+  height: 200px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.experiments .experiment .experiment-image-container .image {
+  height: 100%;
+  width: 100%;
+  background: $BACKGROUND_COLOR_LIGHT;
+  background-image: url("assets/images/experiment1.png");
+  background-size: cover;
+  background-position: center center;
+}
+
+
+// Name of experiment
+.experiments .experiment .experiment-name {
+  font-size: large;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+// Description of experiment
+.experiments .experiment .experiment-description {
+  font-size: small;
+  opacity: .7;
+}
+
+.experiments .experiment .experiment-langaues {
+  font-size: small;
+  margin-bottom: 10px;
+  color: transparentize($THEME_COLOR, .2);
+  font-weight: bold;
+}
