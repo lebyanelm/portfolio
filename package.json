@@ -1,12 +1,13 @@
 {
-  "name": "WEB",
+  "name": "portfolio",
   "version": "0.0.1",
   "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "homepage": "https://lebyanelm.github.io/portfolio",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "deploy": "gh-pages -d dist",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
