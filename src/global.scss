@@ -35,7 +35,8 @@ app-header {
   padding: 0 100px;
   left: 0;
   top: 0;
-  background: $BACKGROUND_COLOR;
+  background: linear-gradient(0deg, transparent, $BACKGROUND_COLOR, $BACKGROUND_COLOR);
+  z-index: 10000;
 }
 
 
@@ -216,8 +217,14 @@ button ion-icon {
   padding-right: 0;
 }
 
-.experiments .load-more {
-  margin-top: $PADDING;
+.load-more {
+  margin-top: 40px !important;
+  border-bottom: none;
+}
+
+.load-more:hover span,
+.load-more:hover ion-icon {
+  color: $THEME_COLOR !important;
 }
 
 // Placeholder image of the experiment
@@ -257,4 +264,5 @@ button ion-icon {
   margin-bottom: 10px;
   color: transparentize($THEME_COLOR, .2);
   font-weight: bold;
+  text-transform: uppercase;
 }

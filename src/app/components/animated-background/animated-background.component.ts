@@ -10,7 +10,7 @@ export class AnimatedBackgroundComponent implements AfterViewInit {
   @ViewChild('CanvasElement') canvasElement: ElementRef<HTMLCanvasElement>;
 
   balls: IPoint[] = [];
-  noBalls = 30;
+  noBalls = 50;
   mouse: IPoint = { x: 0, y: 0 };
 
   constructor() {
