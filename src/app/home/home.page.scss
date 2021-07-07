@@ -1,27 +1,44 @@
-#container {
-  text-align: center;
+@import "../../VARIABLES.scss";
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+// The skills container
+.skills {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: $PADDING;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+// Image container of a skill
+.skills .skill .image-container {
+  display: grid;
+  place-items: center;
+  height: 70px;
+  width: 70px;
+  border-radius: 100px;
+  border: $BORDER;
+  border-width: 1px;
+  position: relative;
+  margin-bottom: 10px !important;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+.skills .skill img {
+  height: 40px;
+  z-index: -1;
 }
 
-#container a {
-  text-decoration: none;
+.skills .skill .image-container.push-up img {
+  transform: translateY(-5px);
+}
+
+.skills .skill img.javascript,
+.skills .skill img.typescript,
+.skills .skill img.adobe {
+  height: 40px;
+}
+
+// The name of the skill
+.skills .skill .skill-name {
+  font-size: small;
+  font-weight: bolder !important;
+  font-family: $HEADER_FONT_FAMILY;
+  text-transform: uppercase;
 }

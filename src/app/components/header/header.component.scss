@@ -1,0 +1,35 @@
+@import "../../../VARIABLES.scss";
+
+
+// Container of the header component
+.header-container {
+  justify-content: space-between;
+  margin-top: $PADDING;
+}
+
+// The name of the site
+.header-container,
+.header-container .sitename-logo {
+  display: flex;
+  align-items: center;
+}
+
+.header-container .sitename-logo .sitename span {
+  font-family: $LOGOTYPE_FONT_FAMILY !important;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+
+// The header navigation link items
+.header-container .sitename-logo .sitename span,
+.header-container .navigation-links a {
+  text-transform: uppercase;
+}
+
+.header-container .navigation-links a {
+  font-family: $HEADER_FONT_FAMILY !important;
+  padding: $PADDING;
+  font-size: small;
+  color: $TEXT_COLOR !important;
+}

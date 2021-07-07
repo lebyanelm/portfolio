@@ -1,3 +1,57 @@
 <ion-content [fullscreen]="true">
+  <!-- Container of the page content -->
+  <div class="page-content">
+    <!-- Animated background -->
+    <app-animated-background></app-animated-background>
+
+    <!-- The header of the page -->
+    <app-header></app-header>
+
+    <!-- The actual content of the page -->
+    <div class="section">
+      <div class="person-avatar"></div>
+      <div class="header-title"><b>where</b>?.design<br>.meets.<b>coding</b><br>(passion)</div>
+      <div class="paragraph">{{ this.getGreeting() }}! I’m a self—taught UI/UX designer <br>and fullstack software engineer based in South Africa.</div>
+
+      <!-- Call to action button -->
+      <button>
+        <ion-icon name="arrow-down-circle"></ion-icon>
+        <span>Libby Lebyane's Resume</span>
+      </button>
+    </div>
+
+    <div class="section" [style.margin-top]="'250px'">
+      <div class="header-title secondary"><b>be.</b>minimal.<br><b>philosophy()</b></div>
+
+      <div class="sub-header-title">Simplicity is the ultimate sophostication.</div>
+
+      <div class="paragraph">It takes a whole lot of work to make something simple,
+        <br>to truly understand the underlying challanges and come up with
+        <br>elegant solutions. It’s not just minimalism or the absense of clutter.
+        <br>It involves digging through the depth of complexity. Understand the product
+        <br>to get rid of the parts that are not essential. <br><br> <b>&mdash; Steve Jobs</b></div>
+    </div>
+
+    <div class="section" [style.margin-top]="'250px'">
+      <div class="header-title secondary"><b>me?.</b>core.<br><b>skills()</b></div>
+      <div class="paragraph" [style.transform]="'translateY(-30px)'">As a self—taught UI/UX and Software Engineer.</div>
+
+      <div class="skills">
+        <div class="skill" *ngFor="let skill of this.skills">
+          <div
+              [class]="skill.name === 'HTML5' || skill.name === 'CSS3' ? 'image-container push-up' : 'image-container'">
+                <img [src]="['/assets/images/', skill.image].join('')" [class]="skill.name.toLocaleLowerCase()">
+          </div>
+          <span class="skill-name">{{ skill.name }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" [style.margin-top]="'250px'">
+      <div class="header-title secondary"><b>me?.</b>projects.<br><b>recent()</b></div>
+      <div class="paragraph" [style.transform]="'translateY(-30px)'">As a self—taught UI/UX and Software Engineer.</div>
+    </div>
+  </div>
+
 
 </ion-content>
