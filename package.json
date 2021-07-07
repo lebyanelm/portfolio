@@ -6,8 +6,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng deploy --base-href=/portfolio/",
-    "deploy": "gh-pages -d www",
+    "build": "ng build --base-href=/portfolio/",
+    "deploy": "ng deploy --base-href=/portfolio/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
