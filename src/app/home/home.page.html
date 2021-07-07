@@ -40,7 +40,7 @@
         <div class="skill" *ngFor="let skill of this.skills">
           <div
               [class]="skill.name === 'HTML5' || skill.name === 'CSS3' ? 'image-container push-up' : 'image-container'">
-                <img [src]="['/assets/images/', skill.image].join('')" [class]="skill.name.toLocaleLowerCase()">
+                <img [src]="['assets/images/', skill.image].join('')" [class]="skill.name.toLocaleLowerCase()">
           </div>
           <span class="skill-name">{{ skill.name }}</span>
         </div>
