@@ -86,7 +86,6 @@ app-animated-background {
 *.sub-header-title,
 *.sub-header-title * {
   font-family: $HEADER_FONT_FAMILY !important;
-  font-weight: bolder;
 }
 
 *.header-title,
@@ -157,7 +156,7 @@ button,
   border: none;
   padding: $PADDING;
   background: transparent;
-  border-bottom: 3px solid $TEXT_COLOR;
+  border-bottom: 3px solid $TEXT_COLOR !important;
   font-family: $HEADER_FONT_FAMILY;
   text-transform: uppercase;
   position: relative;
@@ -202,7 +201,7 @@ button ion-icon {
 }
 
 /* Showcasing of an experiment */
-.experiments {
+.projects {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
@@ -211,10 +210,15 @@ button ion-icon {
 }
 
 // Button of the experiment
-.experiments button {
+.projects .project-button {
   width: 100%;
   padding-left: 0;
   padding-right: 0;
+  border-bottom: 3px solid $TEXT_COLOR !important;
+}
+
+.projects .project-button ion-icon {
+  font-size: 25px;
 }
 
 .load-more {
@@ -228,13 +232,13 @@ button ion-icon {
 }
 
 // Placeholder image of the experiment
-.experiments .experiment .experiment-image-container {
+.projects .project .project-image-container {
   height: 200px;
   width: 100%;
   margin-bottom: 20px;
 }
 
-.experiments .experiment .experiment-image-container .image {
+.projects .project .project-image-container .image {
   height: 100%;
   width: 100%;
   background: $BACKGROUND_COLOR_LIGHT;
@@ -246,23 +250,42 @@ button ion-icon {
 }
 
 
-// Name of experiment
-.experiments .experiment .experiment-name {
+// Name of project
+.projects .project .project-name {
   font-size: large;
   font-weight: bold;
   text-transform: uppercase;
 }
 
-// Description of experiment
-.experiments .experiment .experiment-description {
+// Description of project
+.projects .project .project-description {
   font-size: small;
   opacity: .7;
 }
 
-.experiments .experiment .experiment-langaues {
+.projects .project .project-langaues {
   font-size: small;
   margin-bottom: 10px;
   color: transparentize($THEME_COLOR, .2);
   font-weight: bold;
   text-transform: uppercase;
+}
+
+/* Items / Value */
+.item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: $PADDING;
+}
+
+.item .item-name {
+  font-size: small;
+  opacity: .6;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.item .item-value {
+  color: $TEXT_COLOR;
+  font-size: 14px;
 }

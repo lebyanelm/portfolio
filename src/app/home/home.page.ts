@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import {IonContent} from "@ionic/angular";
+import { IProject } from '../interfaces/IProject';
 
 @Component({
   selector: 'app-home',
@@ -6,6 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  @ViewChild('IonContent') ionContent: IonContent;
+
+  projects: IProject[] = [
+    { name: 'Wirecard Enterprise Payment Wrapper',
+      description: 'The original API uses XML and SOAP for communication, making it hard to implement with JavaScript since in JavaScript we are mostly familiar with JSON, this package does the heavy lifting so you can focus more on your project.',
+      image: 'wirecard-enterprise.png',
+      languages: ['Node.JS', 'Git', 'Rest API'],
+      href: 'https://github.com/lebyanelm/wirecard-enterprise'
+    }
+  ];
+  experimentsLoaded = this.projects.length ? 4 : 0;
 
   skills: { name: string; image: string }[] = [
     { name: 'HTML5', image: 'html5.svg' },

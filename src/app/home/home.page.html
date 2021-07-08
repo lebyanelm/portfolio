@@ -1,4 +1,4 @@
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" #IonContent>
   <!-- Container of the page content -->
   <div class="page-content">
     <!-- Animated background -->
@@ -21,7 +21,7 @@
     </div>
 
     <div class="section" [style.margin-top]="'250px'">
-      <div class="header-title secondary"><b>be.</b>minimal.<br><b>philosophy()</b></div>
+      <div class="header-title secondary"><b>self.</b>minimal.<br><b>philosophy()</b></div>
 
       <div class="sub-header-title">Simplicity is the ultimate sophostication.</div>
 
@@ -33,7 +33,7 @@
     </div>
 
     <div class="section" [style.margin-top]="'250px'">
-      <div class="header-title secondary"><b>me?.</b>core.<br><b>skills()</b></div>
+      <div class="header-title secondary"><b>self?.</b>core.<br><b>skills()</b></div>
       <div class="paragraph" [style.transform]="'translateY(-30px)'">As a self—taught UI/UX and Software Engineer.</div>
 
       <div class="skills">
@@ -48,40 +48,40 @@
     </div>
 
     <div class="section" [style.margin-top]="'250px'">
-      <div class="header-title secondary"><b>me?.</b>experiments.<br><b>recent()</b></div>
+      <div class="header-title secondary"><b>self?.</b>projects.<br><b>recent()</b></div>
       <div class="paragraph" [style.transform]="'translateY(-30px)'">Being passionate about what I do is more important because it is reflected on the products I create, the end user has to feel the love I gave to a product when they use it through out.</div>
 
       <!-- List of all my experiments that I have worked on -->
-      <div class="experiments">
-        <div class="experiment" *ngFor="let experiment of [1, 2, 3, 4]">
-          <div class="experiment-header">
+      <div class="projects">
+        <div class="project" *ngFor="let project of this.projects" (click)="openProject(project)">
+          <div class="project-header">
             <span></span>
             <span></span>
             <span></span>
           </div>
-          <div class="experiment-image-container">
-            <div class="image"></div>
+          <div class="project-image-container">
+            <div class="image" [style.background-image]="'url(assets/images/' + project.image + ')'"></div>
           </div>
-          <div class="experiment-details">
-            <div class="experiment-name">Project Name &mdash; (discontinued)</div>
-            <div class="experiment-langaues">Javascript, Node.JS</div>
-            <div class="experiment-description">This will be the experiment description. Including a couple of details that will impress the viewer.</div>
-            <button class="experiment-button">
-              <span>View Experiment</span>
+          <div class="project-details">
+            <div class="project-name">{{project?.name}}</div>
+            <div class="project-langaues">{{ project?.languages.join(', ') }}</div>
+            <div class="project-description">{{ project?.description }}</div>
+            <a class="clickable project-button" [href]="project.href ? project.href : ''" target="_blank">
+              <span>{{ project.href ? 'View Project' : 'Private Project' }}</span>
               <ion-icon name="arrow-forward-circle"></ion-icon>
-            </button>
+            </a>
           </div>
         </div>
       </div>
 
       <!-- Button for loading more experiments -->
-        <button class="load-more no-border">
-          <span>Show More Experiments</span>
+        <button class="load-more no-border" *ngIf="this.experimentsLoaded < this.projects.length">
+          <span>Show More Projects</span>
           <ion-icon name="ellipsis-horizontal-circle-sharp"></ion-icon>
         </button>
     </div>
 
-    <app-header></app-header>
+    <app-footer [page]="this"></app-footer>
   </div>
 
 

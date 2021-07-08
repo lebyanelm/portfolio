@@ -1,0 +1,53 @@
+@import "../../../VARIABLES.scss";
+
+/* Footer container */
+.footer-container {
+  padding: 100px 100px 50px 100px;
+  background: $BACKGROUND_COLOR_LIGHT;
+  width: 100%;
+  transform: translateX(150px);
+  text-align: left;
+}
+
+/* Footer container details */
+.footer-container .footer-contact-details {
+    display: flex;
+}
+
+.footer-container .footer-contact-details > * {
+  flex: 1;
+}
+
+.footer-container .footer-scroll-up-button {
+  text-transform: uppercase;
+  font-size: small;
+  font-weight: bolder;
+  position: absolute;
+  right: $PADDING;
+  top: 50%;
+  transform: rotate(-90deg) translateY(-50%);
+  user-select: none !important;
+  cursor: pointer !important;
+}
+
+.footer-container .social-media-handles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-size: 14px;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.footer-container .legal {
+  font-size: small;
+  opacity: .5;
+  margin-top: $PADDING;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.footer-container .social-handle {
+  text-transform: uppercase;
+}

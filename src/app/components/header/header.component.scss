@@ -14,12 +14,16 @@
   align-items: center;
 }
 
-.header-container .sitename-logo .sitename span {
+.header-container .sitename-logo .sitename span.name {
   font-family: $LOGOTYPE_FONT_FAMILY !important;
   font-weight: 900;
   letter-spacing: 1.5px;
 }
 
+.header-container .sitename-logo .sitename .tagline {
+  font-size: small !important;
+  opacity: .5;
+}
 
 // The header navigation link items
 .header-container .sitename-logo .sitename span,
