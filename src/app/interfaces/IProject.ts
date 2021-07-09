@@ -4,4 +4,5 @@ export interface IProject {
   image: string;
   languages: string[];
   href: string;
+  buttonText?: string;
 }

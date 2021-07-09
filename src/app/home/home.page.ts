@@ -49,4 +49,12 @@ export class HomePage {
       return 'Good evening';
     }
   }
+
+  openProject(project: IProject) {
+    const aElement = document.createElement('a');
+    aElement.href = project.href;
+    if (aElement.href) {
+      aElement.click();
+    }
+  }
 }
