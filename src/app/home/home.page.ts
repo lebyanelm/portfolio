@@ -16,6 +16,12 @@ export class HomePage {
       image: 'wirecard-enterprise.png',
       languages: ['Node.JS', 'Git', 'Rest API'],
       href: 'https://github.com/lebyanelm/wirecard-enterprise'
+    },
+    { name: 'MF_Code - Morse code image encoder',
+      description: 'A Morse-Code message generator. The message will then be written on an input image. This can then be decoded (manually, digital decoding is under development).',
+      image: 'mf_code.png',
+      languages: ['Python', 'OpenCV', 'Image Manipulation'],
+      href: 'https://github.com/lebyanelm/mf_code'
     }
   ];
   experimentsLoaded = this.projects.length ? 4 : 0;
