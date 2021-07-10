@@ -22,7 +22,12 @@ export class HomePage {
       image: 'mf_code.png',
       languages: ['Python', 'OpenCV', 'Image Manipulation'],
       href: 'https://github.com/lebyanelm/mf_code'
-    }
+    },
+    { name: 'A* Pathfinding Algorithm Visualizer',
+      description: 'This scripts visualizes in real-time an algorithm finding a spot in a maze using the A* Algorithm.',
+      image: 'path_finder_2.gif',
+      languages: ['Python', 'A* Algorithm', 'Pygame'],
+      href: 'https://github.com/lebyanelm/astart-pathfinder'
   ];
   experimentsLoaded = this.projects.length ? 4 : 0;
 
