@@ -62,6 +62,6 @@ export class HomePage {
   }
 
   openProject(project: IProject) {
-    
+
   }
 }

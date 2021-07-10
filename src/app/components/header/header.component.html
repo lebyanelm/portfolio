@@ -1,5 +1,5 @@
 <!-- The container of the header component -->
-<div class="header-container">
+<div class="header-container desktop">
 
   <!-- The logo and name of the site -->
   <div class="sitename-logo">
@@ -12,10 +12,27 @@
 
   <!-- The rererence links, navigation links of the page -->
   <div class="navigation-links">
-    <a class="clickable" routerLink="/?section=start">Home</a>
-    <a class="clickable" routerLink="/?section=philosophy">Developer Philosophy</a>
-    <a class="clickable" routerLink="/?section=skills">Skills</a>
-    <a class="clickable" routerLink="/?section=projects">Projects</a>
-    <a class="clickable" routerLink="/?section=contact">Contact</a>
+    <a class="clickable" routerLink="?section=start">Home</a>
+    <a class="clickable" routerLink="?section=philosophy">Developer Philosophy</a>
+    <a class="clickable" routerLink="?section=skills">Skills</a>
+    <a class="clickable" routerLink="?section=projects">Projects</a>
+    <a class="clickable" routerLink="?section=contact">Contact</a>
   </div>
+
+  <!-- Menu that will be shown on the mobile platform -->
+  <div class="mobile-menu-backdrop"
+       [attr.isVisible]="this.isMobileMenuOpen"
+       (click)="this.toggleMobileMenu()"></div>
+  <div class="mobile-menu-container" [attr.isVisible]="this.isMobileMenuOpen">
+    <a class="mobile-menu-item" routerLink="/?section=start">Home</a>
+    <a class="mobile-menu-item" routerLink="/?section=philosophy">Developer Philosophy</a>
+    <a class="mobile-menu-item" routerLink="/?section=skills">Skills</a>
+    <a class="mobile-menu-item" routerLink="/?section=projects">Projects</a>
+    <a class="mobile-menu-item" routerLink="/?section=contact">Contact</a>
+  </div>
+
+  <!-- Button to toggle the mobile menu -->
+  <div class="navigation-toggle-button"
+       [attr.isOpen]="this.isMobileMenuOpen"
+       (click)="this.toggleMobileMenu()"></div>
 </div>

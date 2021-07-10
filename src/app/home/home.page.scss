@@ -42,3 +42,10 @@
   font-family: $HEADER_FONT_FAMILY;
   text-transform: uppercase;
 }
+
+// Adaptive Responsive Sizes
+@media only screen and (max-width: 784px) {
+  .skills {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

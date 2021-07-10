@@ -37,3 +37,112 @@
   font-size: small;
   color: $TEXT_COLOR !important;
 }
+
+// Mobile menu toggle button
+.navigation-toggle-button {
+  width: 30px;
+}
+
+.navigation-toggle-button,
+.navigation-toggle-button * {
+  transition: transform 200ms ease-in-out;
+}
+
+.navigation-toggle-button::before,
+.navigation-toggle-button::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: $TEXT_COLOR;
+}
+
+.navigation-toggle-button::after {
+  margin-top: 8px;
+}
+
+.navigation-toggle-button[isOpen=true]::before {
+  transform: translateY(100%);
+}
+
+.navigation-toggle-button[isOpen=true]::after {
+  transform: translateY(-100%);
+}
+
+.navigation-toggle-button[isOpen=true] {
+  transform: rotate(90deg);
+}
+
+// Mobile menu
+.mobile-menu-backdrop,
+.mobile-menu-container {
+  display: block;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 300ms ease-in-out,
+              transform 300ms ease-in-out;
+}
+
+.mobile-menu-backdrop[isVisible=true],
+.mobile-menu-container[isVisible=true] {
+}
+
+.mobile-menu-backdrop {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.mobile-menu-backdrop[isVisible=true] {
+  pointer-events: all;
+  opacity: .7;
+}
+
+.mobile-menu-backdrop {
+  width: 100vw;
+  background: #000;
+}
+
+.mobile-menu-container {
+  width: 80vw;
+  padding: 100px $PADDING;
+  text-align: left;
+  background: $BACKGROUND_COLOR;
+  transform: translateX(-100%);
+  //border-right: 2px solid $TEXT_COLOR;
+}
+
+.mobile-menu-container[isVisible=true] {
+  transform: translateX(0);
+}
+
+.mobile-menu-container .mobile-menu-item {
+  display: block;
+  width: 100%;
+  padding: $PADDING 0;
+  text-transform: uppercase;
+  color: $TEXT_COLOR !important;
+  font-size: small;
+  font-weight: bolder;
+  border-bottom: 2px solid transparentize($TEXT_COLOR, .5);
+}
+
+// Adaptive Response Design
+@media only screen and (max-width: 925px) {
+  .header-container {
+    padding: $PADDING 0;
+  }
+}
+
+@media only screen and (max-width: 728px) {
+  .navigation-links {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 728px) {
+  .navigation-toggle-button {
+    display: none;
+  }
+}

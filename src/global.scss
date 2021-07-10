@@ -46,7 +46,7 @@ html {
 }
 
 .page-content {
-  padding: 0 150px 0 150px;
+  padding: 0 0px 0 0px;
 }
 
 body,
@@ -288,4 +288,39 @@ button ion-icon {
 .item .item-value {
   color: $TEXT_COLOR;
   font-size: 14px;
+}
+
+// Adaptive Responsive Design
+@media only screen and (max-width: 884px) {
+  app-header {
+    padding: 0 50px !important;
+  }
+}
+
+@media only screen and (max-width: 784px) {
+  app-header {
+    padding: 0 $PADDING !important;
+  }
+
+  *.header-title,
+  *.header-title * {
+    font-size: 35px;
+  }
+
+  *.paragraph,
+  *.paragraph * {
+    font-size: 14px;
+  }
+
+  .section {
+    margin-top: 150px;
+  }
+
+  .section.secondary {
+    margin-top: 50px;
+  }
+
+  .projects {
+    grid-template-columns: 1fr;
+  }
 }

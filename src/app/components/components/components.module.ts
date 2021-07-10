@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../header/header.component';
 import {AnimatedBackgroundComponent} from '../animated-background/animated-background.component';
 import { FooterComponent } from '../footer/footer.component';
+import {IonicModule} from "@ionic/angular";
 
 
 @NgModule({
@@ -11,9 +12,10 @@ import { FooterComponent } from '../footer/footer.component';
     AnimatedBackgroundComponent,
     FooterComponent
   ],
-  imports: [
-    CommonModule
-  ],
+    imports: [
+        CommonModule,
+        IonicModule
+    ],
   exports: [
     HeaderComponent,
     AnimatedBackgroundComponent,
