@@ -62,10 +62,6 @@ export class HomePage {
   }
 
   openProject(project: IProject) {
-    const aElement = document.createElement('a');
-    aElement.href = project.href;
-    if (aElement.href) {
-      aElement.click();
-    }
+    
   }
 }
