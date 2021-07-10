@@ -27,7 +27,7 @@ export class HomePage {
       description: 'This scripts visualizes in real-time an algorithm finding a spot in a maze using the A* Algorithm.',
       image: 'path_finder_2.gif',
       languages: ['Python', 'A* Algorithm', 'Pygame'],
-      href: 'https://github.com/lebyanelm/astart-pathfinder'
+      href: 'https://github.com/lebyanelm/astar-pathfinder' }
   ];
   experimentsLoaded = this.projects.length ? 4 : 0;
 
