@@ -1,0 +1,128 @@
+/* Roboto Mono */
+/* Thin */
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url('/assets/fonts/roboto-mono/thin.woff2') format('woff2'),
+       url('/assets/fonts/roboto-mono/thin.woff') format('woff');
+  font-style: normal;
+  font-weight: 100;
+}
+
+/* Thin Italic */
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url('/assets/fonts/roboto-mono/thin-italic.woff2') format('woff2'),
+       url('/assets/fonts/roboto-mono/thin-italic.woff') format('woff');
+  font-style: italic;
+  font-weight: 100;
+}
+
+/* Light */
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url('/assets/fonts/roboto-mono/light.woff2') format('woff2'),
+       url('/assets/fonts/roboto-mono/light.woff') format('woff');
+  font-style: normal;
+  font-weight: 200;
+}
+
+/* Light Italic */
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url('/assets/fonts/roboto-mono/light-italic.woff2') format('woff2'),
+       url('/assets/fonts/roboto-mono/light-italic.woff') format('woff');
+  font-style: italic;
+  font-weight: 200;
+}
+
+/* Regular */
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url('/assets/fonts/roboto-mono/regular.woff2') format('woff2'),
+       url('/assets/fonts/roboto-mono/regular.woff') format('woff');
+  font-style: normal;
+  font-weight: normal;
+}
+
+/* Regular Italic */
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url('/assets/fonts/roboto-mono/regular-italic.woff2') format('woff2'),
+       url('/assets/fonts/roboto-mono/regular-italic.woff') format('woff');
+  font-style: italic;
+  font-weight: normal;
+}
+
+/* Medium */
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url('/assets/fonts/roboto-mono/medium.woff2') format('woff2'),
+       url('/assets/fonts/roboto-mono/medium.woff') format('woff');
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* Medium Italic */
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url('/assets/fonts/roboto-mono/medium-italic.woff2') format('woff2'),
+       url('/assets/fonts/roboto-mono/medium-italic.woff') format('woff');
+  font-style: italic;
+  font-weight: normal;
+}
+
+/* Bold */
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url('/assets/fonts/roboto-mono/bold.woff2') format('woff2'),
+       url('/assets/fonts/roboto-mono/bold.woff') format('woff');
+  font-style: normal;
+  font-weight: bold;
+}
+
+/* Bold Italic */
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url('/assets/fonts/roboto-mono/bold-italic.woff2') format('woff2'),
+       url('/assets/fonts/roboto-mono/bold-italic.woff') format('woff');
+  font-style: italic;
+  font-weight: 500;
+}
+
+
+/* ProFont */
+/* Regular */
+@font-face {
+  font-family: 'ProFont';
+  src: url('/assets/fonts/profont/regular.woff2') format('woff2'),
+       url('/assets/fonts/profont/regular.woff') format('woff');
+  font-style: normal;
+  font-weight: normal;
+}
+
+/* Regular Italic */
+@font-face {
+  font-family: 'ProFont';
+  src: url('/assets/fonts/roboto-mono/regular-italic.woff2') format('woff2'),
+       url('/assets/fonts/roboto-mono/regular-italic.woff') format('woff');
+  font-style: italic;
+  font-weight: normal;
+}
+
+/* Bold */
+@font-face {
+  font-family: 'ProFont';
+  src: url('/assets/fonts/profont/bold.woff2') format('woff2'),
+       url('/assets/fonts/profont/bold.woff') format('woff');
+  font-style: normal;
+  font-weight: bold;
+}
+
+/* Bold Italic */
+@font-face {
+  font-family: 'ProFont';
+  src: url('/assets/fonts/profont/bold-italic.woff2') format('woff2'),
+       url('/assets/fonts/profont/bold-italic.woff') format('woff');
+  font-style: italic;
+  font-weight: bold;
+}
