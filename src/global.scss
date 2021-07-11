@@ -118,6 +118,7 @@ a {
   text-decoration: none;
   color: $THEME_COLOR;
   cursor: pointer !important;
+  font-weight: bold;
 }
 
 
@@ -288,6 +289,7 @@ button ion-icon {
 .item .item-value {
   color: $TEXT_COLOR;
   font-size: 14px;
+  font-weight: bold;
 }
 
 // Adaptive Responsive Design
@@ -313,7 +315,7 @@ button ion-icon {
   }
 
   .section {
-    margin-top: 150px;
+    margin-top: 100px;
   }
 
   .section.secondary {

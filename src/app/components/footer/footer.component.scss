@@ -4,7 +4,7 @@
 .footer-container {
   padding: 100px 100px 50px 100px;
   background: $BACKGROUND_COLOR_LIGHT;
-  width: 100%;
+  width: calc(100% - 150px);
   transform: translateX(150px);
   text-align: left;
 }
@@ -25,16 +25,14 @@
   position: absolute;
   right: $PADDING;
   top: 50%;
-  transform: rotate(-90deg) translateY(-50%);
+  transform: rotate(-90deg);
   user-select: none !important;
   cursor: pointer !important;
 }
 
 .footer-container .social-media-handles {
-  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
   font-size: 14px;
   margin-top: 50px;
   text-align: center;
@@ -48,6 +46,23 @@
   text-transform: uppercase;
 }
 
-.footer-container .social-handle {
+.footer-container .social-media-handles > div {
+  display: inline-block;
   text-transform: uppercase;
+  margin: 0 5px 0 5px;
+}
+
+// Adaptive responsive layout
+@media only screen and (max-width: 884px) {
+  .footer-container {
+    padding: 100px 50px 50px 50px;
+    transform: translateX(0);
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 660px) {
+  .footer-container .social-media-handles > div {
+    display: block;
+  }
 }

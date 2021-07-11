@@ -38,9 +38,10 @@
 // The name of the skill
 .skills .skill .skill-name {
   font-size: small;
-  font-weight: bolder !important;
+  font-weight: bolder;
   font-family: $HEADER_FONT_FAMILY;
   text-transform: uppercase;
+  color: $TEXT_COLOR;
 }
 
 // Adaptive Responsive Sizes

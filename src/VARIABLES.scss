@@ -12,6 +12,6 @@ $BORDER: 2px solid $TEXT_COLOR;
 
 
 /////// TYPOGRAPHY
-$PARAGRAPH_FONT_FAMILY: 'Roboto Mono for Powerline', sans-serif;
+$PARAGRAPH_FONT_FAMILY: 'Roboto Mono for Powerline', monospace, sans-serif;
 $HEADER_FONT_FAMILY: $PARAGRAPH_FONT_FAMILY;
-$LOGOTYPE_FONT_FAMILY: 'ProFont for Powerline', $PARAGRAPH_FONT_FAMILY;
+$LOGOTYPE_FONT_FAMILY: 'ProFont for Powerline', monospace, $PARAGRAPH_FONT_FAMILY;
