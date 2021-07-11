@@ -14,10 +14,10 @@
       <div class="paragraph">{{ this.getGreeting() }}! I’m a self—taught UI/UX designer and fullstack software engineer based in South Africa.</div>
 
       <!-- Call to action button -->
-      <button>
+      <a class="clickable call-to-action" target="_blank" href="https://lebyanelm.github.io/portfolio/assets/documents/libbylebyane.pdf">
         <ion-icon name="arrow-down-circle"></ion-icon>
         <span>Libby Lebyane's Resume</span>
-      </button>
+      </a>
     </div>
 
     <div class="section" id="philosophy" [style.margin-top]="'250px'">
@@ -34,7 +34,7 @@
 
     <div class="section" id="skills" [style.margin-top]="'250px'">
       <div class="header-title secondary"><b>self?.</b>core.<br><b>skills()</b></div>
-      <div class="paragraph" [style.transform]="'translateY(-30px)'">As a self—taught UI/UX and Software Engineer.</div>
+      <div class="paragraph" [style.transform]="'translateY(-30px)'">As a self—taught User Interface / User Experience designer, and Software Engineer.</div>
 
       <div class="skills">
         <div class="skill" *ngFor="let skill of this.skills">

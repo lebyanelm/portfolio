@@ -1,5 +1,10 @@
 @import "../../VARIABLES.scss";
 
+// Referes to a button to download my resume
+.call-to-action {
+  border-bottom: 3px solid $TEXT_COLOR !important;
+}
+
 // The skills container
 .skills {
   display: grid;
