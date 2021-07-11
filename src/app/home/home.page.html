@@ -8,7 +8,7 @@
     <app-header></app-header>
 
     <!-- The actual content of the page -->
-    <div class="section">
+    <div class="section" id="introduction">
       <div class="person-avatar"></div>
       <div class="header-title"><b>where</b>?.design<br>.meets.<b>coding</b><br>(passion)</div>
       <div class="paragraph">{{ this.getGreeting() }}! I’m a self—taught UI/UX designer and fullstack software engineer based in South Africa.</div>
@@ -20,7 +20,7 @@
       </button>
     </div>
 
-    <div class="section" [style.margin-top]="'250px'">
+    <div class="section" id="philosophy" [style.margin-top]="'250px'">
       <div class="header-title secondary"><b>self.</b>minimal.<br><b>philosophy()</b></div>
 
       <div class="sub-header-title">Simplicity is the ultimate sophostication.</div>
@@ -32,7 +32,7 @@
         to get rid of the parts that are not essential. <br><br> <b>&mdash; Steve Jobs</b></div>
     </div>
 
-    <div class="section" [style.margin-top]="'250px'">
+    <div class="section" id="skills" [style.margin-top]="'250px'">
       <div class="header-title secondary"><b>self?.</b>core.<br><b>skills()</b></div>
       <div class="paragraph" [style.transform]="'translateY(-30px)'">As a self—taught UI/UX and Software Engineer.</div>
 
@@ -47,7 +47,7 @@
       </div>
     </div>
 
-    <div class="section" [style.margin-top]="'250px'">
+    <div class="section" id="projects" [style.margin-top]="'250px'">
       <div class="header-title secondary"><b>self?.</b>projects.<br><b>recent()</b></div>
       <div class="paragraph" [style.transform]="'translateY(-30px)'">Being passionate about what I do is more important because it is reflected on the products I create, the end user has to feel the love I gave to a product when they use it through out.</div>
 
@@ -81,7 +81,7 @@
         </button>
     </div>
 
-    <app-footer [page]="this"></app-footer>
+    <app-footer [page]="this" id="contact"></app-footer>
   </div>
 
 

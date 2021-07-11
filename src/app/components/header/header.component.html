@@ -12,11 +12,11 @@
 
   <!-- The rererence links, navigation links of the page -->
   <div class="navigation-links">
-    <a class="clickable" routerLink="?section=start">Home</a>
-    <a class="clickable" routerLink="?section=philosophy">Developer Philosophy</a>
-    <a class="clickable" routerLink="?section=skills">Skills</a>
-    <a class="clickable" routerLink="?section=projects">Projects</a>
-    <a class="clickable" routerLink="?section=contact">Contact</a>
+    <a class="clickable" (click)="this.scroll.to('introduction')">Home</a>
+    <a class="clickable" (click)="this.scroll.to('philosophy')">Developer Philosophy</a>
+    <a class="clickable" (click)="this.scroll.to('skills')">Skills</a>
+    <a class="clickable" (click)="this.scroll.to('projects')">Projects</a>
+    <a class="clickable" (click)="this.scroll.to('contact')">Contact</a>
   </div>
 
   <!-- Menu that will be shown on the mobile platform -->
@@ -24,11 +24,11 @@
        [attr.isVisible]="this.isMobileMenuOpen"
        (click)="this.toggleMobileMenu()"></div>
   <div class="mobile-menu-container" [attr.isVisible]="this.isMobileMenuOpen">
-    <a class="mobile-menu-item" routerLink="/?section=start">Home</a>
-    <a class="mobile-menu-item" routerLink="/?section=philosophy">Developer Philosophy</a>
-    <a class="mobile-menu-item" routerLink="/?section=skills">Skills</a>
-    <a class="mobile-menu-item" routerLink="/?section=projects">Projects</a>
-    <a class="mobile-menu-item" routerLink="/?section=contact">Contact</a>
+    <a class="mobile-menu-item" (click)="this.scroll.to('introduction')">Home</a>
+    <a class="mobile-menu-item" (click)="this.scroll.to('philosophy')">Developer Philosophy</a>
+    <a class="mobile-menu-item" (click)="this.scroll.to('skills')">Skills</a>
+    <a class="mobile-menu-item" (click)="this.scroll.to('projects')">Projects</a>
+    <a class="mobile-menu-item" (click)="this.scroll.to('contact')">Contact</a>
   </div>
 
   <!-- Button to toggle the mobile menu -->

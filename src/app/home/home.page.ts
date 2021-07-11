@@ -1,13 +1,14 @@
-import {Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {IonContent} from "@ionic/angular";
 import { IProject } from '../interfaces/IProject';
+import {ScrollService} from "../services/scroll.service";
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements AfterViewInit {
   @ViewChild('IonContent') ionContent: IonContent;
 
   projects: IProject[] = [
@@ -49,7 +50,29 @@ export class HomePage {
     { name: 'Figma', image: 'figma.svg' },
   ];
 
-  constructor() {}
+  constructor(
+    private scroll: ScrollService
+  ) {}
+
+  ngAfterViewInit() {
+    this.scroll.on_scroll.subscribe((elementId) => {
+      const element = document.getElementById(elementId);
+      const marginOffset = 100;
+      if (element) {
+        let scrollPosition = element.offsetTop;
+
+        // Apply the offset to the scroll position to show start of the element in view
+        if (scrollPosition === marginOffset) {
+          scrollPosition = 0;
+        } else {
+          scrollPosition -= marginOffset;
+        }
+
+        this.ionContent.scrollToPoint(0, scrollPosition, 300);
+      }
+    });
+  }
+
   getGreeting() {
     const hour = new Date().getHours();
     if (hour < 12) {

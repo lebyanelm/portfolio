@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ScrollService} from "../../services/scroll.service";
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   isMobileMenuOpen = false;
-  constructor() { }
+  constructor(
+    public scroll: ScrollService
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.scroll.on_scroll.subscribe(() => this.isMobileMenuOpen = false);
+  }
 
   toggleMobileMenu() {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
