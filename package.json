@@ -3,11 +3,12 @@
   "version": "0.0.1",
   "author": "Ionic Framework",
   "homepage": "https://lebyanelm.github.io/portfolio",
+  "remote": "https://github.com/lebyanelm/portfolio.git",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --base-href=/portfolio/",
-    "deploy": "ng deploy --base-href=/portfolio/",
+    "publish": "ng deploy --base-href=/portfolio/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
