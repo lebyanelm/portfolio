@@ -61,8 +61,13 @@ ion-footer {
   color: $TEXT_COLOR;
   box-sizing: border-box;
   outline: none !important;
+  /* Typography definations */
+  font-family: $PARAGRAPH_FONT_FAMILY;
 }
 
+*::selection {
+  background: $THEME_COLOR;
+}
 
 /* Animated background of the site */
 app-animated-background {
@@ -73,12 +78,6 @@ app-animated-background {
   width: 100vw;
   height: 100vh;
   z-index: -1;
-}
-
-
-/* Typography definations */
-* {
-  font-family: $PARAGRAPH_FONT_FAMILY;
 }
 
 *.header-title,
