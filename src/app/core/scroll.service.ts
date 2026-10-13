@@ -48,6 +48,15 @@ export class ScrollService {
     this.lenis?.start();
   }
 
+  toTop(): void {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduce && this.lenis) {
+      this.lenis.scrollTo(0);
+      return;
+    }
+    window.scrollTo(0, 0);
+  }
+
   destroy(): void {
     this.desktopMq?.removeEventListener('change', this.onPreference);
     this.reduceMq?.removeEventListener('change', this.onPreference);

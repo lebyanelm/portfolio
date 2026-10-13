@@ -1,3 +1,19 @@
+@mixin dark-palette {
+  color-scheme: dark;
+  --paper: #14160f;
+  --paper-2: #22281e;
+  --ink: #f6f1e8;
+  --ink-soft: #e4dccf;
+  --muted: #cfc6b6;
+  --line: rgba(246, 241, 232, 0.2);
+  --forest: #245443;
+  --on-forest: #f6f1e8;
+  --mango-deep: #ffb199;
+  --inverse: #0b0d0a;
+  --on-inverse: #f6f1e8;
+  --scrollbar: #6d675c;
+}
+
 :root {
   --paper: #f3efe7;
   --paper-2: #e7e1d6;
@@ -6,14 +22,29 @@
   --muted: #4e5448;
   --line: rgba(20, 22, 15, 0.16);
   --forest: #173026;
+  --on-forest: #f3efe7;
   --mango: #ff4e1a;
+  --on-mango: #14160f;
   --mango-deep: #c4320c;
+  --inverse: #14160f;
+  --on-inverse: #f3efe7;
+  --scrollbar: #c4bfb4;
   --nav-h: 4.25rem;
   --gutter: clamp(1.15rem, 3.2vw, 2.75rem);
   --font-display: 'Bricolage Grotesque Variable', 'Avenir Next', 'Segoe UI', sans-serif;
   --font-body: 'Outfit Variable', 'Avenir Next', 'Segoe UI', sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
   color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  @include dark-palette;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    @include dark-palette;
+  }
 }
 
 *,
@@ -88,7 +119,7 @@ button {
 
 ::selection {
   background: var(--mango);
-  color: var(--ink);
+  color: var(--on-mango);
 }
 
 :focus-visible {
@@ -153,7 +184,7 @@ html.has-cursor * {
 }
 
 html {
-  scrollbar-color: #c4bfb4 transparent;
+  scrollbar-color: var(--scrollbar) transparent;
 }
 
 @media (prefers-reduced-motion: reduce) {

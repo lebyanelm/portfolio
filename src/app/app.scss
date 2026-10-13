@@ -12,7 +12,27 @@
 
 .defer-footer {
   min-height: 8rem;
+  background: var(--inverse);
+}
+
+.to-top {
+  position: fixed;
+  z-index: 35;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  width: 2.75rem;
+  height: 2.75rem;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--paper);
+  border-radius: 50%;
   background: var(--ink);
+  color: var(--paper);
+  box-shadow: 0 0 0 1px var(--ink);
+}
+
+:host-context(body.menu-open) .to-top {
+  visibility: hidden;
 }
 
 .defer-error {

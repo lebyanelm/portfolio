@@ -10,18 +10,30 @@
     }
   </nav>
 
-  <a class="cta bar-cta" href="#contact" appMagnetic>Start a project</a>
+  <div class="bar-actions">
+    <button
+      type="button"
+      class="theme-toggle"
+      [attr.aria-pressed]="dark()"
+      aria-label="Dark mode"
+      (click)="toggleTheme()"
+    >
+      <span class="theme-knob" aria-hidden="true"></span>
+    </button>
 
-  <button
-    type="button"
-    class="burger"
-    [attr.aria-expanded]="open()"
-    aria-controls="site-menu"
-    (click)="toggle()"
-  >
-    <span class="burger-icon" [class.is-open]="open()" aria-hidden="true"></span>
-    <span class="sr-only">{{ open() ? 'Close menu' : 'Open menu' }}</span>
-  </button>
+    <a class="cta bar-cta" href="#contact" appMagnetic>Start a project</a>
+
+    <button
+      type="button"
+      class="burger"
+      [attr.aria-expanded]="open()"
+      aria-controls="site-menu"
+      (click)="toggle()"
+    >
+      <span class="burger-icon" [class.is-open]="open()" aria-hidden="true"></span>
+      <span class="sr-only">{{ open() ? 'Close menu' : 'Open menu' }}</span>
+    </button>
+  </div>
 
   <div class="menu" id="site-menu" [hidden]="!open()">
     <nav aria-label="Mobile">

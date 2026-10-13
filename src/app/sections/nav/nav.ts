@@ -2,6 +2,7 @@ import { afterNextRender, Component, ElementRef, inject, signal } from '@angular
 import { site as content } from '../../data/site';
 import { Magnetic } from '../../core/magnetic';
 import { ScrollService } from '../../core/scroll.service';
+import { applyTheme, persistTheme, storedTheme, systemTheme } from '../../core/theme';
 
 @Component({
   selector: 'app-nav',
@@ -12,10 +13,14 @@ import { ScrollService } from '../../core/scroll.service';
 export class Nav {
   protected readonly site = content;
   protected readonly open = signal(false);
+  protected readonly dark = signal(
+    typeof document !== 'undefined' && document.documentElement.dataset['theme'] === 'dark',
+  );
 
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly scroll = inject(ScrollService);
   private desktopMq?: MediaQueryList;
+  private schemeMq?: MediaQueryList;
 
   private readonly onScroll = (): void => {
     this.host.nativeElement.classList.toggle('is-scrolled', window.scrollY > 8);
@@ -29,6 +34,13 @@ export class Nav {
     if (event.matches) this.close();
   };
 
+  private readonly onScheme = (): void => {
+    if (storedTheme()) return;
+    const theme = systemTheme();
+    applyTheme(theme);
+    this.dark.set(theme === 'dark');
+  };
+
   constructor() {
     afterNextRender(() => {
       this.onScroll();
@@ -36,6 +48,9 @@ export class Nav {
       document.addEventListener('keydown', this.onKey);
       this.desktopMq = window.matchMedia('(min-width: 980px)');
       this.desktopMq.addEventListener('change', this.onDesktop);
+      this.schemeMq = window.matchMedia('(prefers-color-scheme: dark)');
+      this.schemeMq.addEventListener('change', this.onScheme);
+      this.dark.set(document.documentElement.dataset['theme'] === 'dark');
     });
   }
 
@@ -43,7 +58,14 @@ export class Nav {
     window.removeEventListener('scroll', this.onScroll);
     document.removeEventListener('keydown', this.onKey);
     this.desktopMq?.removeEventListener('change', this.onDesktop);
+    this.schemeMq?.removeEventListener('change', this.onScheme);
     document.body.classList.remove('menu-open');
+  }
+
+  protected toggleTheme(): void {
+    const next = this.dark() ? 'light' : 'dark';
+    this.dark.set(next === 'dark');
+    persistTheme(next);
   }
 
   protected toggle(): void {

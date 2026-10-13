@@ -72,8 +72,8 @@ h2 {
   left: 0.9rem;
   margin: 0;
   padding: 0.38rem 0.5rem;
-  background: var(--paper);
-  color: var(--ink);
+  background: #f3efe7;
+  color: #14160f;
   font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.14em;
@@ -103,6 +103,13 @@ h2 {
     color-mix(in srgb, var(--bg) 82%, transparent) 52%,
     transparent 100%
   );
+}
+
+@media (max-width: 859px) {
+  .card-copy {
+    padding-right: 4.75rem;
+    padding-bottom: 4.25rem;
+  }
 }
 
 .eyebrow,

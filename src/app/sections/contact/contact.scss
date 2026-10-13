@@ -7,8 +7,8 @@
   overflow: hidden;
   min-height: 100svh;
   display: flex;
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--inverse);
+  color: var(--on-inverse);
 }
 
 .watermark {
@@ -23,7 +23,7 @@
   line-height: 0.8;
   letter-spacing: -0.07em;
   color: transparent;
-  -webkit-text-stroke: 1px color-mix(in srgb, var(--paper) 22%, transparent);
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--on-inverse) 22%, transparent);
   pointer-events: none;
   user-select: none;
 }
@@ -35,7 +35,7 @@
   flex-direction: column;
   justify-content: flex-end;
   width: 100%;
-  padding: calc(var(--nav-h) + 3rem) var(--gutter) 3rem;
+  padding: calc(var(--nav-h) + 3rem) var(--gutter) calc(3rem + 3.75rem);
 }
 
 .index,
@@ -49,7 +49,7 @@
 
 .index {
   font-size: 0.75rem;
-  color: color-mix(in srgb, var(--paper) 68%, transparent);
+  color: color-mix(in srgb, var(--on-inverse) 72%, transparent);
 }
 
 h2 {
@@ -70,7 +70,7 @@ h2 {
   margin-top: 1.3rem;
   font-size: 1.1rem;
   line-height: 1.5;
-  color: color-mix(in srgb, var(--paper) 82%, transparent);
+  color: color-mix(in srgb, var(--on-inverse) 86%, transparent);
 }
 
 .actions {
@@ -82,7 +82,7 @@ h2 {
 .email {
   display: inline-block;
   width: fit-content;
-  color: var(--paper);
+  color: var(--on-inverse);
   text-decoration: none;
   font-family: var(--font-display);
   font-weight: 680;
@@ -108,14 +108,14 @@ h2 {
 }
 
 .socials a {
-  color: var(--paper);
+  color: var(--on-inverse);
   font-size: 0.78rem;
 }
 
 .where {
   margin-top: 2.5rem;
   font-size: 0.75rem;
-  color: color-mix(in srgb, var(--paper) 70%, transparent);
+  color: color-mix(in srgb, var(--on-inverse) 74%, transparent);
 }
 
 @media (max-width: 700px) {

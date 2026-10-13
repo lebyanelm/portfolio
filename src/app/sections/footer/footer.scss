@@ -5,10 +5,10 @@
 .footer {
   display: grid;
   gap: 1.4rem;
-  padding: 1.6rem var(--gutter) 1.8rem;
-  background: var(--ink);
-  color: var(--paper);
-  border-top: 1px solid color-mix(in srgb, var(--paper) 16%, transparent);
+  padding: 1.6rem var(--gutter) calc(1.8rem + 3.75rem);
+  background: var(--inverse);
+  color: var(--on-inverse);
+  border-top: 1px solid color-mix(in srgb, var(--on-inverse) 16%, transparent);
 }
 
 .name {
@@ -29,7 +29,7 @@
 
 .role,
 .fine {
-  color: color-mix(in srgb, var(--paper) 68%, transparent);
+  color: color-mix(in srgb, var(--on-inverse) 72%, transparent);
 }
 
 .links {
@@ -42,7 +42,7 @@
 }
 
 .links a {
-  color: var(--paper);
+  color: var(--on-inverse);
   text-decoration: none;
 }
 
@@ -60,6 +60,8 @@
   .footer {
     grid-template-columns: 1.2fr 1fr;
     align-items: end;
+    padding-right: calc(var(--gutter) + 3.75rem);
+    padding-bottom: 1.8rem;
   }
 
   .fine {

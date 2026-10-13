@@ -29,4 +29,8 @@ export class App {
     });
     if (isPlatformBrowser(this.platformId)) this.scroll.start();
   }
+
+  protected scrollToTop(): void {
+    this.scroll.toTop();
+  }
 }

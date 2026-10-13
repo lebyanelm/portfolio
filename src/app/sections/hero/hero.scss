@@ -93,9 +93,9 @@ html.motion .status-dot {
 .marquee {
   overflow: hidden;
   background: var(--mango);
-  color: var(--ink);
+  color: var(--on-mango);
   padding-block: 0.8rem;
-  border-top: 1px solid var(--ink);
+  border-top: 1px solid var(--on-mango);
   user-select: none;
 }
 
@@ -133,7 +133,7 @@ html.motion .status-dot {
   width: 0.42rem;
   height: 0.42rem;
   margin-inline: 1.15rem;
-  background: var(--ink);
+  background: var(--on-mango);
   transform: rotate(45deg);
   flex: none;
 }
