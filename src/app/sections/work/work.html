@@ -19,14 +19,12 @@
         @for (project of projects; track project.id) {
           <a
             class="card"
+            data-cursor="View"
             [routerLink]="['/work', project.slug]"
             [style.--bg]="project.palette.bg"
             [style.--fg]="project.palette.fg"
             [style.--accent]="project.palette.accent"
           >
-            @if (project.placeholder) {
-              <p class="badge">Placeholder</p>
-            }
             <div class="art">
               @if (project.thumb) {
                 <img class="card-photo" [src]="project.thumb" alt="" />

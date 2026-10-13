@@ -182,14 +182,14 @@ h3 {
   }
 }
 
-html.motion-desktop .work-stage {
+:host-context(html.motion-desktop) .work-stage {
   height: 100svh;
   overflow: hidden;
   display: flex;
   align-items: center;
 }
 
-html.motion-desktop .work-track {
+:host-context(html.motion-desktop) .work-track {
   display: flex;
   width: max-content;
   height: calc(100svh - var(--nav-h) - 4.25rem);
@@ -198,15 +198,15 @@ html.motion-desktop .work-track {
   gap: 1rem;
 }
 
-html.motion-desktop .card {
+:host-context(html.motion-desktop) .card {
   width: min(70vw, 820px);
   height: 100%;
   min-height: 0;
   flex: none;
 }
 
-html.motion-desktop .work-fraction,
-html.motion-desktop .work-hint {
+:host-context(html.motion-desktop) .work-fraction,
+:host-context(html.motion-desktop) .work-hint {
   display: block;
   position: absolute;
   bottom: 1.15rem;
@@ -216,10 +216,10 @@ html.motion-desktop .work-hint {
   color: var(--muted);
 }
 
-html.motion-desktop .work-fraction {
+:host-context(html.motion-desktop) .work-fraction {
   right: var(--gutter);
 }
 
-html.motion-desktop .work-hint {
+:host-context(html.motion-desktop) .work-hint {
   left: var(--gutter);
 }

@@ -17,6 +17,12 @@ export interface Fact {
 
 export type ServiceTheme = 'paper' | 'forest' | 'mango';
 
+export interface ServiceImage {
+  src: string;
+  alt: string;
+  fit?: 'contain';
+}
+
 export interface Service {
   id: string;
   index: string;
@@ -25,6 +31,7 @@ export interface Service {
   summary: string;
   points: string[];
   theme: ServiceTheme;
+  images: ServiceImage[];
 }
 
 export interface ProcessStep {
@@ -43,6 +50,7 @@ export interface SiteContent {
   location: {
     city: string;
     region: string;
+    postal: string;
     country: string;
     coordinates: string;
   };
@@ -90,16 +98,17 @@ export const site: SiteContent = {
   location: {
     city: 'Midrand',
     region: 'Gauteng',
+    postal: '1685',
     country: 'South Africa',
     coordinates: '25.99° S, 28.13° E',
   },
-  email: 'hello@example.com',
-  emailIsPlaceholder: true,
+  email: 'lebyane.lm@gmail.com',
+  emailIsPlaceholder: false,
   cv: {
-    href: 'libby-lebyane-cv.txt',
+    href: 'libby-lebyane-cv.pdf',
     label: 'Download CV',
     short: 'CV',
-    note: 'Placeholder file. Replace it with a real CV before you send the link.',
+    note: '',
   },
   socials: [
     {
@@ -109,9 +118,8 @@ export const site: SiteContent = {
     },
     {
       label: 'LinkedIn',
-      handle: 'placeholder',
+      handle: 'lebyanelm',
       href: 'https://www.linkedin.com/in/lebyanelm',
-      placeholder: true,
     },
   ],
   nav: [
@@ -132,16 +140,17 @@ export const site: SiteContent = {
     'Logo design',
     'Web design',
     'UI design',
+    'Microsoft Office',
   ],
   about: {
     title: ['Design and code,', 'ready to join a team.'],
-    lead: 'Libby Lebyane is a junior frontend and fullstack developer, and a designer, in Midrand. He makes logos, websites, and applications, and he is open to roles in Johannesburg, Midrand, or remote.',
-    body: 'Angular and TypeScript for the interface. JavaScript where a page should stay direct. Node.js and Python for services. SQL or MongoDB when the data has to stay honest. He studied economics, which shows up as a habit: read the brief before decorating it. The work covers logo and brand design, web design, and app development — frontend, backend, or the full stretch.',
+    lead: 'I am a junior frontend and fullstack developer, and a designer, in Midrand. I make logos, websites, and applications, and I am open to roles in Johannesburg, Midrand, or remote.',
+    body: 'Angular and TypeScript for the interface. JavaScript where a page should stay direct. Node.js and Python for services. SQL or MongoDB when the data has to stay honest. I studied economics at Tshwane University of Technology: a Diploma in Economics in 2024, then an Advanced Diploma in Economics in 2025. That training shows up as a habit: read the brief before decorating it. I currently work as a cross-trained sales consultant at Truworths, Mall of Africa, handling transactions, stock, and records. From 2019 to 2022 I was an administrative assistant at Ikamva Youth in Ebony Park, keeping databases and documents in order. Alongside that, I design logos, websites, and apps.',
     pull: ['Hired for the work.', 'Not the theatre.'],
     facts: [
       { label: 'Open to', value: 'Johannesburg, Midrand, or remote' },
-      { label: 'Roles', value: 'Frontend, fullstack, UI and brand' },
-      { label: 'Based in', value: 'Midrand, Gauteng' },
+      { label: 'Education', value: 'Advanced Diploma in Economics' },
+      { label: 'Based in', value: 'Midrand, Gauteng, 1685' },
     ],
   },
   services: [
@@ -151,9 +160,29 @@ export const site: SiteContent = {
       kicker: 'Branding',
       title: 'Logo design',
       summary:
-        'Marks for businesses that have to work at favicon size and on a shelf. Logos, wordmarks, colour, type, and a short set of rules a team can follow.',
+        'I make marks that have to work at favicon size and on a shelf. Logos, wordmarks, colour, type, and a short set of rules a team can follow.',
       points: ['Logos', 'Colour', 'Type', 'Brand rules'],
       theme: 'paper',
+      images: [
+        {
+          src: 'work/broilerbliss/logo-colour.png',
+          alt: 'Full-colour BroilerBliss logo',
+          fit: 'contain',
+        },
+        {
+          src: 'work/broilerbliss/brand-sheet.png',
+          alt: 'BroilerBliss brand sheet',
+        },
+        {
+          src: 'work/hetchfund/logo.png',
+          alt: 'Hetchfund logo',
+          fit: 'contain',
+        },
+        {
+          src: 'work/broilerbliss/label-fresh.png',
+          alt: 'BroilerBliss whole fresh chicken label',
+        },
+      ],
     },
     {
       id: 'web',
@@ -161,9 +190,23 @@ export const site: SiteContent = {
       kicker: 'Sites',
       title: 'Web design',
       summary:
-        'Websites and product UI with a clear job. Structure first, then type, then motion that explains something. Designed and built in Angular and TypeScript, so the page you approve is the page that ships.',
+        'I design and build websites and product UI with a clear job. Structure first, then type, then motion that explains something. In Angular and TypeScript, the page you approve is the page that ships.',
       points: ['Web design', 'UI', 'Angular', 'TypeScript'],
       theme: 'forest',
+      images: [
+        {
+          src: 'work/hetchfund/ui-hero.jpg',
+          alt: 'Hetchfund homepage hero',
+        },
+        {
+          src: 'work/hetchfund/ui-flow.jpg',
+          alt: 'Hetchfund how-it-works section',
+        },
+        {
+          src: 'work/hetchfund/ui-board.jpg',
+          alt: 'Hetchfund page section with verification and learning tools',
+        },
+      ],
     },
     {
       id: 'apps',
@@ -171,14 +214,28 @@ export const site: SiteContent = {
       kicker: 'Products',
       title: 'App development',
       summary:
-        'Interfaces in Angular, TypeScript, and JavaScript. Services in Node.js or Python. Data in SQL or MongoDB. Junior fullstack work a person can use, and the next developer can read.',
+        'I build interfaces in Angular, TypeScript, and JavaScript, services in Node.js or Python, and data in SQL or MongoDB. Work you can use, and the next developer can read.',
       points: ['Node.js', 'Python', 'SQL', 'MongoDB'],
       theme: 'mango',
+      images: [
+        {
+          src: 'work/hetchfund/ui-flow.jpg',
+          alt: 'Hetchfund product flow on the marketing site',
+        },
+        {
+          src: 'work/hetchfund/ui-board.jpg',
+          alt: 'Hetchfund product sections for verification and AI tools',
+        },
+        {
+          src: 'work/hetchfund/ui-hero.jpg',
+          alt: 'Hetchfund product homepage',
+        },
+      ],
     },
   ],
   work: {
     title: ['Selected', 'work'],
-    lede: 'BroilerBliss and Hetchfund are real studies. The other pieces are placeholders in the same case-study layout, ready to be replaced.',
+    lede: 'Two studies: a farm brand, and a crowdfunding platform I designed and built.',
   },
   process: {
     title: ['A short path', 'from brief to ship.'],
@@ -208,6 +265,6 @@ export const site: SiteContent = {
   },
   contact: {
     title: ['Open to', 'roles'],
-    lede: 'Junior frontend, fullstack, web design, and UI or brand roles in Johannesburg, Midrand, or remote. A logo, a site, or a small product is welcome too.',
+    lede: 'I am open to junior frontend, fullstack, web design, and UI or brand roles in Johannesburg, Midrand, or remote. A logo, a site, or a small product is welcome too.',
   },
 };

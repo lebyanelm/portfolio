@@ -41,20 +41,13 @@
         <li>
           <a [href]="social.href" target="_blank" rel="me noopener noreferrer">
             {{ social.label }}
-            @if (social.placeholder) {
-              <span class="tag">Placeholder</span>
-            }
           </a>
         </li>
       }
       <li>
-        <a [href]="site.cv.href" download>
-          {{ site.cv.label }}
-          <span class="tag">Placeholder</span>
-        </a>
+        <a [href]="site.cv.href" download>{{ site.cv.label }}</a>
       </li>
     </ul>
-    <p class="note">{{ site.cv.note }} LinkedIn profile URL is a placeholder too.</p>
   </div>
 
   <p class="pull">

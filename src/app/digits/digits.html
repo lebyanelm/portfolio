@@ -1,0 +1,11 @@
+<div class="field" aria-hidden="true">
+  @for (glyph of glyphs; track glyph.id) {
+    <span
+      class="glyph"
+      [style.left.%]="glyph.x"
+      [style.top.%]="glyph.y"
+      [style.font-size.px]="glyph.size"
+      >{{ glyph.char }}</span
+    >
+  }
+</div>

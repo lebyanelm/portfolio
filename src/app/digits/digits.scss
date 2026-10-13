@@ -1,0 +1,33 @@
+:host {
+  display: block;
+  height: 0;
+}
+
+.field {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  perspective: 900px;
+}
+
+.glyph {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--ink) 78%, transparent);
+  transform: translate(-50%, -50%);
+  transform-style: preserve-3d;
+  opacity: 0;
+  user-select: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glyph {
+    opacity: 0.28;
+    transform: translate(-50%, -50%);
+  }
+}

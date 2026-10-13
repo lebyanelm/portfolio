@@ -53,10 +53,58 @@
   z-index: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
+  gap: 1.25rem;
   width: 100%;
-  padding: calc(var(--nav-h) + 3.5rem) var(--gutter) 4.75rem;
+  padding: calc(var(--nav-h) + 1.5rem) var(--gutter) 2.5rem;
   transform-origin: center center;
+}
+
+.panel-copy {
+  order: 1;
+}
+
+.collage {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.5rem;
+  height: min(34vh, 15rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.collage[data-count='4'] {
+  grid-template-columns: 1fr 1fr;
+}
+
+.collage[data-count='3'] li:first-child {
+  grid-row: span 2;
+}
+
+.shot {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--paper) 82%, transparent);
+}
+
+.shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.shot img.is-mark {
+  width: auto;
+  height: auto;
+  max-width: 86%;
+  max-height: 70%;
+  object-fit: contain;
+  object-position: center;
 }
 
 .meta {
@@ -81,7 +129,7 @@
 
 h3 {
   max-width: 10ch;
-  font-size: clamp(3.4rem, 9vw, 8.4rem);
+  font-size: clamp(2.5rem, 9vw, 4.4rem);
   font-weight: 780;
   letter-spacing: -0.05em;
   line-height: 0.86;
@@ -116,22 +164,74 @@ h3 {
   display: none;
 }
 
-html.motion-desktop .services-pin {
+:host-context(html.motion-desktop) .services-pin {
   height: 100svh;
   overflow: hidden;
 }
 
-html.motion-desktop .panel {
+:host-context(html.motion-desktop) .panel {
   position: absolute;
   inset: 0;
   min-height: 0;
 }
 
-html.motion-desktop .panel.is-covered {
+:host-context(html.motion-desktop) .panel-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(15rem, 0.95fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  align-content: stretch;
+  column-gap: clamp(1.25rem, 3vw, 3rem);
+  height: 100%;
+  padding-top: calc(var(--nav-h) + 1.1rem);
+  padding-bottom: 2.75rem;
+}
+
+:host-context(html.motion-desktop) .meta {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: start;
+  margin-bottom: 0;
+}
+
+:host-context(html.motion-desktop) .panel-copy {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: end;
+  order: 0;
+  min-width: 0;
+}
+
+:host-context(html.motion-desktop) .collage {
+  order: 0;
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  height: min(62vh, 32rem);
+  margin: 0;
+}
+
+:host-context(html.motion-desktop) .summary {
+  margin-top: 0.75rem;
+  font-size: 1.02rem;
+}
+
+:host-context(html.motion-desktop) .points {
+  margin-top: 0.9rem;
+}
+
+:host-context(html.motion-desktop) h3 {
+  font-size: clamp(2.7rem, 5.2vw, 5.2rem);
+}
+
+:host-context(html.motion) .shot img:not(.is-mark) {
+  height: 118%;
+}
+
+:host-context(html.motion-desktop) .panel.is-covered {
   clip-path: inset(100% 0 0 0);
 }
 
-html.motion-desktop .rail {
+:host-context(html.motion-desktop) .rail {
   position: absolute;
   z-index: 4;
   left: var(--gutter);
@@ -143,7 +243,7 @@ html.motion-desktop .rail {
   pointer-events: none;
 }
 
-html.motion-desktop .rail span {
+:host-context(html.motion-desktop) .rail span {
   display: block;
   width: 100%;
   height: 100%;

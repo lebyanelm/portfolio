@@ -12,17 +12,11 @@
     <p class="lede">{{ site.contact.lede }}</p>
     <div class="actions">
       <a class="email" [href]="'mailto:' + site.email" appMagnetic>{{ site.email }}</a>
-      @if (site.emailIsPlaceholder) {
-        <p class="note">Placeholder address. Replace it in the site file before you publish.</p>
-      }
       <ul class="socials">
         @for (social of site.socials; track social.href) {
           <li>
             <a [href]="social.href" target="_blank" rel="me noopener noreferrer">
               {{ social.label }}
-              @if (social.placeholder) {
-                <span> (placeholder)</span>
-              }
               <span class="sr-only"> ({{ social.handle }}, opens in a new tab)</span>
             </a>
           </li>
@@ -30,7 +24,8 @@
       </ul>
     </div>
     <p class="where">
-      {{ site.location.city }} · {{ site.location.region }} · {{ site.location.country }}
+      {{ site.location.city }}, {{ site.location.region }}, {{ site.location.postal }},
+      {{ site.location.country }}
     </p>
   </div>
 </section>

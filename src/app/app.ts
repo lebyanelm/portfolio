@@ -3,12 +3,13 @@ import { isPlatformBrowser } from '@angular/common';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs';
 import { Cursor } from './cursor/cursor';
+import { Digits } from './digits/digits';
 import { Nav } from './sections/nav/nav';
 import { ScrollService } from './core/scroll.service';
 
 @Component({
   selector: 'app-root',
-  imports: [Cursor, Nav, RouterOutlet],
+  imports: [Digits, Cursor, Nav, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })

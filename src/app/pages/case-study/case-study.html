@@ -2,12 +2,7 @@
   <article class="case" id="top">
     <header class="case-hero">
       <a class="back" routerLink="/" fragment="work">All work</a>
-      <p class="index">
-        {{ project.category }} · {{ project.year }}
-        @if (project.placeholder) {
-          <span class="badge">Placeholder</span>
-        }
-      </p>
+      <p class="index">{{ project.category }} · {{ project.year }}</p>
       <h1>
         <span class="line"><span class="line-inner">{{ project.title }}</span></span>
       </h1>
@@ -96,7 +91,7 @@
     </section>
 
     @if (next(); as next) {
-      <a class="next" [routerLink]="['/work', next.slug]">
+      <a class="next" data-cursor="View" [routerLink]="['/work', next.slug]">
         <span>Next project</span>
         <strong>{{ next.title }}</strong>
       </a>

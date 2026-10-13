@@ -2,6 +2,11 @@
   display: block;
 }
 
+main {
+  position: relative;
+  z-index: 1;
+}
+
 .to-top {
   position: fixed;
   z-index: 35;

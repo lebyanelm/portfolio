@@ -28,7 +28,28 @@ export class Services {
     if (isReducedMotion() || this.services.length < 2) return;
     const root = this.host.nativeElement;
     this.mm = bindViewport((mode) => {
-      if (mode !== 'desktop') return;
+      if (mode !== 'desktop') {
+        const shots = root.querySelectorAll<HTMLElement>('.shot img');
+        shots.forEach((img, index) => {
+          const from = index % 2 === 0 ? 8 : -8;
+          gsap.fromTo(
+            img,
+            { yPercent: from, scale: 1.08 },
+            {
+              yPercent: from * -0.6,
+              scale: 1,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: img.closest('.panel') ?? img,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true,
+              },
+            },
+          );
+        });
+        return;
+      }
       const pin = root.querySelector<HTMLElement>('.services-pin');
       const panels = gsap.utils.toArray<HTMLElement>('.panel', root);
       const rail = root.querySelector<HTMLElement>('[data-rail]');
@@ -57,6 +78,17 @@ export class Services {
       });
 
       panels.forEach((panel, index) => {
+        const shots = panel.querySelectorAll<HTMLElement>('.shot img');
+        const at = index === 0 ? 0 : index - 1;
+        shots.forEach((img, shot) => {
+          const from = shot % 2 === 0 ? 12 : -10;
+          tl.fromTo(
+            img,
+            { yPercent: from, scale: 1.12 },
+            { yPercent: from * -0.45, scale: 1, ease: 'none', duration: 1 },
+            at,
+          );
+        });
         if (index === 0) return;
         tl.to(panel, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', duration: 1 }, index - 1);
         const previous = panels[index - 1].querySelector('.panel-inner');
