@@ -1,0 +1,19 @@
+<footer class="footer">
+  <div class="brand">
+    <p class="name">{{ site.name }}</p>
+    <p class="role">{{ site.role }}, {{ site.location.city }}</p>
+  </div>
+  <ul class="links">
+    @for (social of site.socials; track social.href) {
+      <li>
+        <a [href]="social.href" target="_blank" rel="me noopener noreferrer">{{ social.label }}</a>
+      </li>
+    }
+    <li><a [href]="'mailto:' + site.email">Email</a></li>
+    <li><a href="#top">Back to top</a></li>
+  </ul>
+  <p class="fine">
+    <span>© {{ year }} {{ site.name }}</span>
+    <span>{{ site.location.coordinates }}</span>
+  </p>
+</footer>

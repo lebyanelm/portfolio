@@ -1,0 +1,33 @@
+<section class="contact" id="contact" aria-labelledby="contact-heading">
+  <p class="watermark" aria-hidden="true">LL</p>
+  <div class="contact-inner">
+    <p class="index">05 — Contact</p>
+    <h2 id="contact-heading">
+      @for (line of site.contact.title; track line; let last = $last) {
+        <span class="line">
+          <span class="line-inner" [class.has-dot]="last">{{ line }}</span>
+        </span>
+      }
+    </h2>
+    <p class="lede">{{ site.contact.lede }}</p>
+    <div class="actions">
+      <a class="email" [href]="'mailto:' + site.email" appMagnetic>{{ site.email }}</a>
+      @if (site.emailIsPlaceholder) {
+        <p class="note">Placeholder address. Replace it in the site file before you publish.</p>
+      }
+      <ul class="socials">
+        @for (social of site.socials; track social.href) {
+          <li>
+            <a [href]="social.href" target="_blank" rel="me noopener noreferrer">
+              {{ social.label }}
+              <span class="sr-only"> ({{ social.handle }}, opens in a new tab)</span>
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+    <p class="where">
+      {{ site.location.city }} · {{ site.location.region }} · {{ site.location.country }}
+    </p>
+  </div>
+</section>

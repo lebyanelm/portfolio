@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Libby Lebyane — Creative Developer in Midrand</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Libby Lebyane is a creative developer in Midrand, Gauteng. Logo and brand design, web design, and app development with Angular, JavaScript, Node.js, Python, and SQL."
+    />
+    <meta name="author" content="Libby Lebyane" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#f3efe7" />
+    <meta name="color-scheme" content="light" />
+    <meta name="geo.region" content="ZA-GP" />
+    <meta name="geo.placename" content="Midrand" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_ZA" />
+    <meta property="og:title" content="Libby Lebyane — Creative Developer in Midrand" />
+    <meta
+      property="og:description"
+      content="Logo and brand design, web design, and app development. Frontend, backend, and full stack — from Midrand, Gauteng."
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Libby Lebyane — Creative Developer in Midrand" />
+    <meta
+      name="twitter:description"
+      content="Logo and brand design, web design, and app development. Frontend, backend, and full stack — from Midrand, Gauteng."
+    />
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Libby Lebyane",
+        "jobTitle": "Creative Developer",
+        "description": "Creative developer in Midrand offering logo design, web design, and app development.",
+        "email": "hello@example.com",
+        "url": "https://github.com/lebyanelm",
+        "sameAs": ["https://github.com/lebyanelm"],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Midrand",
+          "addressRegion": "Gauteng",
+          "addressCountry": "ZA"
+        },
+        "knowsAbout": [
+          "Logo design",
+          "Branding",
+          "Web design",
+          "App development",
+          "Angular",
+          "JavaScript",
+          "Node.js",
+          "Python",
+          "SQL"
+        ]
+      }
+    </script>
+    <script>
+      (function () {
+        try {
+          var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          var desktop = window.matchMedia('(min-width: 900px)').matches;
+          var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+          var root = document.documentElement;
+          if (!reduce) root.classList.add('motion');
+          if (!reduce && desktop) root.classList.add('motion-desktop');
+          if (!reduce && fine) root.classList.add('has-cursor');
+          if (reduce) root.classList.add('reduced');
+          window.setTimeout(function () {
+            if (!document.body || !document.body.classList.contains('app-ready')) {
+              root.classList.remove('motion');
+            }
+          }, 4000);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <style>
+        .line-inner,
+        .js-intro {
+          transform: none !important;
+          opacity: 1 !important;
+        }
+      </style>
+    </noscript>
+    <app-root></app-root>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="hero-main">
+    <div class="hero-top js-intro">
+      <p>{{ site.role }}</p>
+      <p>{{ site.location.city }}, {{ site.location.region }}</p>
+    </div>
+    <p class="status js-intro">
+      <span class="status-dot" aria-hidden="true"></span>
+      {{ site.availability }}
+    </p>
+    <p class="deck js-intro">{{ site.deck }}</p>
+    <h1 class="hero-title" id="hero-title">
+      <span class="line"
+        ><span class="line-inner">{{ site.first }}</span></span
+      >
+      <span class="line"
+        ><span class="line-inner">{{ site.last }}</span></span
+      >
+    </h1>
+    <a class="jump js-intro" href="#work" appMagnetic>
+      <span>Selected work</span>
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+        <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" />
+      </svg>
+    </a>
+  </div>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      @for (copy of [0, 1]; track copy) {
+        <ul class="marquee-group">
+          @for (skill of site.skills; track skill) {
+            <li>{{ skill }}<i class="sep"></i></li>
+          }
+        </ul>
+      }
+    </div>
+  </div>
+</section>

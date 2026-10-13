@@ -1,0 +1,72 @@
+:host {
+  display: block;
+}
+
+.footer {
+  display: grid;
+  gap: 1.4rem;
+  padding: 1.6rem var(--gutter) 1.8rem;
+  background: var(--ink);
+  color: var(--paper);
+  border-top: 1px solid color-mix(in srgb, var(--paper) 16%, transparent);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-weight: 740;
+  font-size: 1.35rem;
+  letter-spacing: -0.03em;
+}
+
+.role,
+.fine,
+.links a {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.role,
+.fine {
+  color: color-mix(in srgb, var(--paper) 68%, transparent);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 1.3rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.links a {
+  color: var(--paper);
+  text-decoration: none;
+}
+
+.links a:hover {
+  color: var(--mango);
+}
+
+.fine {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.2rem;
+}
+
+@media (min-width: 800px) {
+  .footer {
+    grid-template-columns: 1.2fr 1fr;
+    align-items: end;
+  }
+
+  .fine {
+    grid-column: 1 / -1;
+  }
+
+  .links {
+    justify-content: flex-end;
+  }
+}

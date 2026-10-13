@@ -1,0 +1,35 @@
+<section class="about" id="about" aria-labelledby="about-heading">
+  <div class="about-grid">
+    <p class="index">01 — About</p>
+    <div class="about-copy">
+      <h2 id="about-heading">
+        @for (line of site.about.title; track line) {
+          <span class="line"
+            ><span class="line-inner">{{ line }}</span></span
+          >
+        }
+      </h2>
+      <div class="about-body">
+        <p data-words>{{ site.about.lead }}</p>
+        <p data-reveal>{{ site.about.body }}</p>
+      </div>
+    </div>
+  </div>
+
+  <dl class="facts">
+    @for (fact of site.about.facts; track fact.label) {
+      <div data-reveal>
+        <dt>{{ fact.label }}</dt>
+        <dd>{{ fact.value }}</dd>
+      </div>
+    }
+  </dl>
+
+  <p class="pull">
+    @for (line of site.about.pull; track line; let last = $last) {
+      <span class="line">
+        <span class="line-inner" [class.ghost]="last">{{ line }}</span>
+      </span>
+    }
+  </p>
+</section>

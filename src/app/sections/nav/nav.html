@@ -1,0 +1,34 @@
+<header class="bar">
+  <a class="logo" href="#top">
+    <span aria-hidden="true">LL</span>
+    <span class="sr-only">{{ site.name }}, back to top</span>
+  </a>
+
+  <nav class="desktop-nav" aria-label="Primary">
+    @for (link of site.nav; track link.href) {
+      <a [href]="link.href">{{ link.label }}</a>
+    }
+  </nav>
+
+  <a class="cta bar-cta" href="#contact" appMagnetic>Start a project</a>
+
+  <button
+    type="button"
+    class="burger"
+    [attr.aria-expanded]="open()"
+    aria-controls="site-menu"
+    (click)="toggle()"
+  >
+    <span class="burger-icon" [class.is-open]="open()" aria-hidden="true"></span>
+    <span class="sr-only">{{ open() ? 'Close menu' : 'Open menu' }}</span>
+  </button>
+
+  <div class="menu" id="site-menu" [hidden]="!open()">
+    <nav aria-label="Mobile">
+      @for (link of site.nav; track link.href) {
+        <a [href]="link.href" (click)="close()">{{ link.label }}</a>
+      }
+    </nav>
+    <a class="menu-cta" href="#contact" (click)="close()">Start a project</a>
+  </div>
+</header>

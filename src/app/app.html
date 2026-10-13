@@ -1,0 +1,44 @@
+<a class="skip-link" href="#main">Skip to content</a>
+<app-cursor />
+<app-nav />
+<main id="main">
+  <app-hero />
+  <app-about />
+  <app-services />
+  @defer (on idle; prefetch on immediate) {
+    <app-work />
+  } @placeholder {
+    <div class="defer-block" aria-hidden="true"></div>
+  } @error {
+    <section class="defer-error" aria-live="polite">
+      <p>Selected work did not load. Refresh the page to try again.</p>
+    </section>
+  }
+  @defer (on idle; prefetch on immediate) {
+    <app-process />
+  } @placeholder {
+    <div class="defer-block defer-short" aria-hidden="true"></div>
+  } @error {
+    <section class="defer-error" aria-live="polite">
+      <p>The process section did not load. Refresh the page to try again.</p>
+    </section>
+  }
+  @defer (on idle; prefetch on immediate) {
+    <app-contact />
+  } @placeholder {
+    <div class="defer-block" aria-hidden="true"></div>
+  } @error {
+    <section class="defer-error" aria-live="polite">
+      <p>Contact details did not load. Refresh the page to try again.</p>
+    </section>
+  }
+</main>
+@defer (on idle; prefetch on immediate) {
+  <app-site-footer />
+} @placeholder {
+  <div class="defer-footer" aria-hidden="true"></div>
+} @error {
+  <footer class="defer-error">
+    <p>Footer did not load. Refresh the page to try again.</p>
+  </footer>
+}

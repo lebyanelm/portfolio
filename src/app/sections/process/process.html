@@ -1,0 +1,28 @@
+<section class="process" id="process" aria-labelledby="process-heading">
+  <header class="process-head">
+    <p class="index">04 — Process</p>
+    <h2 id="process-heading">
+      @for (line of site.process.title; track line) {
+        <span class="line"
+          ><span class="line-inner">{{ line }}</span></span
+        >
+      }
+    </h2>
+    <p class="lede">{{ site.process.lede }}</p>
+  </header>
+
+  <div class="process-body">
+    <div class="line-track" aria-hidden="true"><span data-line></span></div>
+    <ol class="steps">
+      @for (step of site.process.steps; track step.index) {
+        <li>
+          <span class="num">{{ step.index }}</span>
+          <div>
+            <h3>{{ step.title }}</h3>
+            <p>{{ step.body }}</p>
+          </div>
+        </li>
+      }
+    </ol>
+  </div>
+</section>

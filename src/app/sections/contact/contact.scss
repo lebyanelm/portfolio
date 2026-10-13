@@ -1,0 +1,127 @@
+:host {
+  display: block;
+}
+
+.contact {
+  position: relative;
+  overflow: hidden;
+  min-height: 100svh;
+  display: flex;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.watermark {
+  position: absolute;
+  right: -0.08em;
+  bottom: -0.28em;
+  z-index: 0;
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 46vw;
+  line-height: 0.8;
+  letter-spacing: -0.07em;
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--paper) 22%, transparent);
+  pointer-events: none;
+  user-select: none;
+}
+
+.contact-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  padding: calc(var(--nav-h) + 3rem) var(--gutter) 3rem;
+}
+
+.index,
+.note,
+.where,
+.socials a {
+  font-family: var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.index {
+  font-size: 0.75rem;
+  color: color-mix(in srgb, var(--paper) 68%, transparent);
+}
+
+h2 {
+  margin-top: 0.8rem;
+  font-size: clamp(4rem, 12vw, 9.5rem);
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  line-height: 0.84;
+}
+
+.has-dot::after {
+  content: '.';
+  color: var(--mango);
+}
+
+.lede {
+  max-width: 32rem;
+  margin-top: 1.3rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--paper) 82%, transparent);
+}
+
+.actions {
+  display: grid;
+  gap: 0.8rem;
+  margin-top: 2rem;
+}
+
+.email {
+  display: inline-block;
+  width: fit-content;
+  color: var(--paper);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 680;
+  font-size: clamp(1.6rem, 4vw, 3.2rem);
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  border-bottom: 2px solid var(--mango);
+}
+
+.note {
+  max-width: 28rem;
+  font-size: 0.72rem;
+  color: var(--mango);
+}
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  margin: 0.6rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.socials a {
+  color: var(--paper);
+  font-size: 0.78rem;
+}
+
+.where {
+  margin-top: 2.5rem;
+  font-size: 0.75rem;
+  color: color-mix(in srgb, var(--paper) 70%, transparent);
+}
+
+@media (max-width: 700px) {
+  .watermark {
+    top: 18%;
+    bottom: auto;
+    font-size: 58vw;
+  }
+}

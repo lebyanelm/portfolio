@@ -1,0 +1,31 @@
+<section class="services" id="services" aria-labelledby="services-heading">
+  <h2 class="sr-only" id="services-heading">Services</h2>
+  @if (services.length === 0) {
+    <p class="empty">No services listed yet.</p>
+  } @else {
+    <div class="services-pin">
+      @for (service of services; track service.id) {
+        <article class="panel" [attr.data-theme]="service.theme">
+          <p class="watermark" aria-hidden="true">{{ service.index }}</p>
+          <div class="panel-inner">
+            <p class="meta">
+              <span>02 — Services</span>
+              <span>{{ service.index }} / {{ total }}</span>
+            </p>
+            <p class="kicker">{{ service.kicker }}</p>
+            <h3>{{ service.title }}</h3>
+            <p class="summary">{{ service.summary }}</p>
+            <ul class="points">
+              @for (point of service.points; track point) {
+                <li>{{ point }}</li>
+              }
+            </ul>
+          </div>
+        </article>
+      }
+      <div class="rail" aria-hidden="true" [style.--count]="services.length">
+        <span data-rail></span>
+      </div>
+    </div>
+  }
+</section>
