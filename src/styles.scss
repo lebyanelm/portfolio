@@ -32,7 +32,7 @@
   --nav-h: 4.25rem;
   --gutter: clamp(1.15rem, 3.2vw, 2.75rem);
   --font-display: 'Bricolage Grotesque Variable', 'Avenir Next', 'Segoe UI', sans-serif;
-  --font-body: 'Outfit Variable', 'Avenir Next', 'Segoe UI', sans-serif;
+  --font-body: 'Urbanist Variable', 'Avenir Next', 'Segoe UI', sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
   color-scheme: light;
 }
@@ -88,7 +88,10 @@ p {
 
 h1,
 h2,
-h3 {
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
   font-weight: 740;
 }

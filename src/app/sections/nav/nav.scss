@@ -3,6 +3,7 @@
 }
 
 .bar {
+  font-family: var(--font-display);
   position: fixed;
   z-index: 50;
   inset: 0 0 auto 0;
