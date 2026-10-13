@@ -178,7 +178,7 @@ export const site: SiteContent = {
   ],
   work: {
     title: ['Selected', 'work'],
-    lede: 'BroilerBliss is a real brand study. The other pieces are placeholders in the same case-study layout, ready to be replaced.',
+    lede: 'BroilerBliss and Hetchfund are real studies. The other pieces are placeholders in the same case-study layout, ready to be replaced.',
   },
   process: {
     title: ['A short path', 'from brief to ship.'],
