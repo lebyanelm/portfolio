@@ -127,7 +127,7 @@ html.motion-desktop .panel {
   min-height: 0;
 }
 
-html.motion-desktop .panel:not(:first-of-type) {
+html.motion-desktop .panel.is-covered {
   clip-path: inset(100% 0 0 0);
 }
 

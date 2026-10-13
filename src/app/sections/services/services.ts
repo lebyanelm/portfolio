@@ -34,6 +34,11 @@ export class Services {
       const rail = root.querySelector<HTMLElement>('[data-rail]');
       if (!pin || panels.length < 2) return;
 
+      panels.forEach((panel, index) => {
+        if (index === 0) return;
+        gsap.set(panel, { clipPath: 'inset(100% 0% 0% 0%)' });
+      });
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: pin,

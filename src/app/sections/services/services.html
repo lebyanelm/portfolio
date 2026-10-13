@@ -4,8 +4,13 @@
     <p class="empty">No services listed yet.</p>
   } @else {
     <div class="services-pin">
-      @for (service of services; track service.id) {
-        <article class="panel" [attr.data-theme]="service.theme">
+      @for (service of services; track service.id; let first = $first; let i = $index) {
+        <article
+          class="panel"
+          [class.is-covered]="!first"
+          [style.z-index]="i + 1"
+          [attr.data-theme]="service.theme"
+        >
           <p class="watermark" aria-hidden="true">{{ service.index }}</p>
           <div class="panel-inner">
             <p class="meta">
