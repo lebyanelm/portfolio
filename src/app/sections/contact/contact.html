@@ -20,6 +20,9 @@
           <li>
             <a [href]="social.href" target="_blank" rel="me noopener noreferrer">
               {{ social.label }}
+              @if (social.placeholder) {
+                <span> (placeholder)</span>
+              }
               <span class="sr-only"> ({{ social.handle }}, opens in a new tab)</span>
             </a>
           </li>

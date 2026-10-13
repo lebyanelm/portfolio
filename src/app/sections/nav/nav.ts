@@ -1,4 +1,5 @@
 import { afterNextRender, Component, ElementRef, inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { site as content } from '../../data/site';
 import { Magnetic } from '../../core/magnetic';
 import { ScrollService } from '../../core/scroll.service';
@@ -6,7 +7,7 @@ import { applyTheme, persistTheme, storedTheme, systemTheme } from '../../core/t
 
 @Component({
   selector: 'app-nav',
-  imports: [Magnetic],
+  imports: [Magnetic, RouterLink],
   templateUrl: './nav.html',
   styleUrl: './nav.scss',
 })

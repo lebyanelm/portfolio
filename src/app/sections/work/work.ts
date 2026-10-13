@@ -1,4 +1,5 @@
 import { afterNextRender, Component, ElementRef, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { projects as projectList } from '../../data/projects';
@@ -8,7 +9,7 @@ import { ProjectVisual } from './project-visual';
 
 @Component({
   selector: 'app-work',
-  imports: [ProjectVisual],
+  imports: [ProjectVisual, RouterLink],
   templateUrl: './work.html',
   styleUrl: './work.scss',
 })

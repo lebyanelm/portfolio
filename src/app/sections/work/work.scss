@@ -63,6 +63,17 @@ h2 {
   height: min(74vh, 40rem);
   background: var(--bg);
   color: var(--fg);
+  text-decoration: none;
+}
+
+.card-photo {
+  position: absolute;
+  left: 10%;
+  top: 8%;
+  width: 80%;
+  height: 42%;
+  object-fit: contain;
+  object-position: center;
 }
 
 .badge {

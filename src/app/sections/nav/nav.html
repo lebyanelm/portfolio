@@ -1,12 +1,12 @@
 <header class="bar">
-  <a class="logo" href="#top">
+  <a class="logo" routerLink="/" fragment="top">
     <span aria-hidden="true">LL</span>
-    <span class="sr-only">{{ site.name }}, back to top</span>
+    <span class="sr-only">{{ site.name }}, home</span>
   </a>
 
   <nav class="desktop-nav" aria-label="Primary">
-    @for (link of site.nav; track link.href) {
-      <a [href]="link.href">{{ link.label }}</a>
+    @for (link of site.nav; track link.fragment) {
+      <a [routerLink]="['/']" [fragment]="link.fragment">{{ link.label }}</a>
     }
   </nav>
 
@@ -21,7 +21,7 @@
       <span class="theme-knob" aria-hidden="true"></span>
     </button>
 
-    <a class="cta bar-cta" href="#contact" appMagnetic>Start a project</a>
+    <a class="cta bar-cta" routerLink="/" fragment="contact" appMagnetic>Get in touch</a>
 
     <button
       type="button"
@@ -37,10 +37,10 @@
 
   <div class="menu" id="site-menu" [hidden]="!open()">
     <nav aria-label="Mobile">
-      @for (link of site.nav; track link.href) {
-        <a [href]="link.href" (click)="close()">{{ link.label }}</a>
+      @for (link of site.nav; track link.fragment) {
+        <a [routerLink]="['/']" [fragment]="link.fragment" (click)="close()">{{ link.label }}</a>
       }
     </nav>
-    <a class="menu-cta" href="#contact" (click)="close()">Start a project</a>
+    <a class="menu-cta" routerLink="/" fragment="contact" (click)="close()">Get in touch</a>
   </div>
 </header>

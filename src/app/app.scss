@@ -2,19 +2,6 @@
   display: block;
 }
 
-.defer-block {
-  min-height: 70vh;
-}
-
-.defer-short {
-  min-height: 40vh;
-}
-
-.defer-footer {
-  min-height: 8rem;
-  background: var(--inverse);
-}
-
 .to-top {
   position: fixed;
   z-index: 35;
@@ -33,10 +20,4 @@
 
 :host-context(body.menu-open) .to-top {
   visibility: hidden;
-}
-
-.defer-error {
-  padding: 4rem var(--gutter);
-  background: var(--paper);
-  color: var(--ink);
 }

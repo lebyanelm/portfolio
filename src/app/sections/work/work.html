@@ -17,8 +17,9 @@
     <div class="work-stage">
       <div class="work-track">
         @for (project of projects; track project.id) {
-          <article
+          <a
             class="card"
+            [routerLink]="['/work', project.slug]"
             [style.--bg]="project.palette.bg"
             [style.--fg]="project.palette.fg"
             [style.--accent]="project.palette.accent"
@@ -27,7 +28,11 @@
               <p class="badge">Placeholder</p>
             }
             <div class="art">
-              <app-project-visual class="art-media" [visual]="project.visual" />
+              @if (project.thumb) {
+                <img class="card-photo" [src]="project.thumb" alt="" />
+              } @else {
+                <app-project-visual class="art-media" [visual]="project.visual" />
+              }
             </div>
             <div class="card-copy">
               <p class="eyebrow">{{ project.category }} · {{ project.year }}</p>
@@ -39,8 +44,9 @@
                   <li>{{ item }}</li>
                 }
               </ul>
+              <p class="role">View case study</p>
             </div>
-          </article>
+          </a>
         }
       </div>
       <p class="work-fraction" aria-hidden="true"><span data-fraction>01</span> / {{ total }}</p>

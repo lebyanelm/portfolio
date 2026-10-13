@@ -16,6 +16,15 @@
     </div>
   </div>
 
+  <div class="stack" id="stack">
+    <h3 id="stack-heading">Stack</h3>
+    <ul>
+      @for (skill of site.skills; track skill) {
+        <li>{{ skill }}</li>
+      }
+    </ul>
+  </div>
+
   <dl class="facts">
     @for (fact of site.about.facts; track fact.label) {
       <div data-reveal>
@@ -24,6 +33,29 @@
       </div>
     }
   </dl>
+
+  <div class="hire">
+    <h3 class="sr-only">Links</h3>
+    <ul>
+      @for (social of site.socials; track social.href) {
+        <li>
+          <a [href]="social.href" target="_blank" rel="me noopener noreferrer">
+            {{ social.label }}
+            @if (social.placeholder) {
+              <span class="tag">Placeholder</span>
+            }
+          </a>
+        </li>
+      }
+      <li>
+        <a [href]="site.cv.href" download>
+          {{ site.cv.label }}
+          <span class="tag">Placeholder</span>
+        </a>
+      </li>
+    </ul>
+    <p class="note">{{ site.cv.note }} LinkedIn profile URL is a placeholder too.</p>
+  </div>
 
   <p class="pull">
     @for (line of site.about.pull; track line; let last = $last) {

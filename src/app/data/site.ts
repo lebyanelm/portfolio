@@ -1,12 +1,13 @@
 export interface NavLink {
   label: string;
-  href: string;
+  fragment: string;
 }
 
 export interface SocialLink {
   label: string;
   handle: string;
   href: string;
+  placeholder?: boolean;
 }
 
 export interface Fact {
@@ -47,6 +48,12 @@ export interface SiteContent {
   };
   email: string;
   emailIsPlaceholder: boolean;
+  cv: {
+    href: string;
+    label: string;
+    short: string;
+    note: string;
+  };
   socials: SocialLink[];
   nav: NavLink[];
   skills: string[];
@@ -77,9 +84,9 @@ export const site: SiteContent = {
   name: 'Libby Lebyane',
   first: 'Libby',
   last: 'Lebyane',
-  role: 'Creative developer',
-  availability: 'Open for selected projects',
-  deck: 'Logo design, web design, and apps — front to back.',
+  role: 'Junior frontend developer and designer',
+  availability: 'Open to roles in Johannesburg, Midrand, or remote',
+  deck: 'Logos, websites, and apps — from the mark to the database.',
   location: {
     city: 'Midrand',
     region: 'Gauteng',
@@ -88,38 +95,52 @@ export const site: SiteContent = {
   },
   email: 'hello@example.com',
   emailIsPlaceholder: true,
+  cv: {
+    href: 'libby-lebyane-cv.txt',
+    label: 'Download CV',
+    short: 'CV',
+    note: 'Placeholder file. Replace it with a real CV before you send the link.',
+  },
   socials: [
     {
       label: 'GitHub',
       handle: 'lebyanelm',
       href: 'https://github.com/lebyanelm',
     },
+    {
+      label: 'LinkedIn',
+      handle: 'placeholder',
+      href: 'https://www.linkedin.com/in/lebyanelm',
+      placeholder: true,
+    },
   ],
   nav: [
-    { label: 'About', href: '#about' },
-    { label: 'Services', href: '#services' },
-    { label: 'Work', href: '#work' },
-    { label: 'Process', href: '#process' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'About', fragment: 'about' },
+    { label: 'Services', fragment: 'services' },
+    { label: 'Work', fragment: 'work' },
+    { label: 'Process', fragment: 'process' },
+    { label: 'Contact', fragment: 'contact' },
   ],
   skills: [
     'Angular',
+    'TypeScript',
     'JavaScript',
     'Node.js',
     'Python',
     'SQL',
+    'MongoDB',
     'Logo design',
     'Web design',
-    'App development',
+    'UI design',
   ],
   about: {
-    title: ['Economics first.', 'Then the making.'],
-    lead: 'Libby Lebyane is a creative developer in Midrand, Gauteng. He graduated in economics, then crossed into design and software with the habit school gave him still intact: check the numbers before you trust the story.',
-    body: 'He learns quickly and does not treat a stack as an identity. Angular and JavaScript for the interface. Node.js and Python where a product needs a backend. SQL when the data has to stay honest. The practice covers logos and branding, websites, and applications — frontend, backend, or the full stretch.',
-    pull: ['Numbers on one side.', 'Craft on the other.'],
+    title: ['Design and code,', 'ready to join a team.'],
+    lead: 'Libby Lebyane is a junior frontend and fullstack developer, and a designer, in Midrand. He makes logos, websites, and applications, and he is open to roles in Johannesburg, Midrand, or remote.',
+    body: 'Angular and TypeScript for the interface. JavaScript where a page should stay direct. Node.js and Python for services. SQL or MongoDB when the data has to stay honest. He studied economics, which shows up as a habit: read the brief before decorating it. The work covers logo and brand design, web design, and app development — frontend, backend, or the full stretch.',
+    pull: ['Hired for the work.', 'Not the theatre.'],
     facts: [
-      { label: 'Studied', value: 'Economics' },
-      { label: 'Works in', value: 'Design and code' },
+      { label: 'Open to', value: 'Johannesburg, Midrand, or remote' },
+      { label: 'Roles', value: 'Frontend, fullstack, UI and brand' },
       { label: 'Based in', value: 'Midrand, Gauteng' },
     ],
   },
@@ -130,8 +151,8 @@ export const site: SiteContent = {
       kicker: 'Branding',
       title: 'Logo design',
       summary:
-        'A mark has to hold at the size of a favicon and still feel considered on a shopfront. Logos, wordmarks, and the short system around them — colour, type, and rules a team will actually use.',
-      points: ['Logos', 'Colour', 'Typography', 'Brand rules'],
+        'Marks for businesses that have to work at favicon size and on a shelf. Logos, wordmarks, colour, type, and a short set of rules a team can follow.',
+      points: ['Logos', 'Colour', 'Type', 'Brand rules'],
       theme: 'paper',
     },
     {
@@ -140,8 +161,8 @@ export const site: SiteContent = {
       kicker: 'Sites',
       title: 'Web design',
       summary:
-        'Websites with a point of view. Structure first, then type, then motion that explains something instead of decorating it. Designed and built in the same hands, so the page you approve is the page that ships.',
-      points: ['Web design', 'UI', 'Interaction', 'Frontend'],
+        'Websites and product UI with a clear job. Structure first, then type, then motion that explains something. Designed and built in Angular and TypeScript, so the page you approve is the page that ships.',
+      points: ['Web design', 'UI', 'Angular', 'TypeScript'],
       theme: 'forest',
     },
     {
@@ -150,14 +171,14 @@ export const site: SiteContent = {
       kicker: 'Products',
       title: 'App development',
       summary:
-        'Frontend, backend, or the path between them. Interfaces in Angular and JavaScript. Services in Node.js or Python. Data in SQL. Software a person can use, and the next developer can read.',
-      points: ['Frontend', 'Backend', 'Full stack', 'SQL'],
+        'Interfaces in Angular, TypeScript, and JavaScript. Services in Node.js or Python. Data in SQL or MongoDB. Junior fullstack work a person can use, and the next developer can read.',
+      points: ['Node.js', 'Python', 'SQL', 'MongoDB'],
       theme: 'mango',
     },
   ],
   work: {
     title: ['Selected', 'work'],
-    lede: 'Studies for brands, sites, and products. Each one is a placeholder — swap in real work from the projects file when it is ready.',
+    lede: 'BroilerBliss is a real brand study. The other pieces are placeholders in the same case-study layout, ready to be replaced.',
   },
   process: {
     title: ['A short path', 'from brief to ship.'],
@@ -176,7 +197,7 @@ export const site: SiteContent = {
       {
         index: '03',
         title: 'Build',
-        body: 'Design and code stay in one conversation. Angular, JavaScript, Node.js, Python, and SQL, each where it earns a place.',
+        body: 'Design and code stay in one conversation. Angular, TypeScript, JavaScript, Node.js, Python, SQL, and MongoDB, each where it earns a place.',
       },
       {
         index: '04',
@@ -186,7 +207,7 @@ export const site: SiteContent = {
     ],
   },
   contact: {
-    title: ['Start a', 'project'],
-    lede: 'A logo, a site, or a product with a backend. Send as much as you have. A hunch is enough to start.',
+    title: ['Open to', 'roles'],
+    lede: 'Junior frontend, fullstack, web design, and UI or brand roles in Johannesburg, Midrand, or remote. A logo, a site, or a small product is welcome too.',
   },
 };

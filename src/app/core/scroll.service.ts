@@ -57,6 +57,27 @@ export class ScrollService {
     window.scrollTo(0, 0);
   }
 
+  jumpTop(): void {
+    this.lenis?.resize();
+    if (this.lenis) this.lenis.scrollTo(0, { immediate: true });
+    else window.scrollTo(0, 0);
+  }
+
+  toElement(element: HTMLElement): void {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.lenis?.resize();
+    if (!reduce && this.lenis) {
+      this.lenis.scrollTo(element);
+      return;
+    }
+    element.scrollIntoView();
+  }
+
+  refresh(): void {
+    ScrollTrigger.refresh();
+    this.lenis?.resize();
+  }
+
   destroy(): void {
     this.desktopMq?.removeEventListener('change', this.onPreference);
     this.reduceMq?.removeEventListener('change', this.onPreference);
