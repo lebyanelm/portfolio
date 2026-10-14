@@ -1,7 +1,7 @@
 @mixin dark-palette {
   color-scheme: dark;
-  --paper: #14160f;
-  --paper-2: #22281e;
+  --paper: #000;
+  --paper-2: #000;
   --ink: #f6f1e8;
   --ink-soft: #e4dccf;
   --muted: #cfc6b6;
@@ -9,7 +9,7 @@
   --forest: #245443;
   --on-forest: #f6f1e8;
   --mango-deep: #ffb199;
-  --inverse: #0b0d0a;
+  --inverse: #000;
   --on-inverse: #f6f1e8;
   --scrollbar: #6d675c;
 }

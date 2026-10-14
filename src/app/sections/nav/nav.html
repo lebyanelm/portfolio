@@ -1,46 +1,96 @@
-<header class="bar">
-  <a class="logo" routerLink="/" fragment="top">
-    <span aria-hidden="true">LL</span>
-    <span class="sr-only">{{ site.name }}, home</span>
-  </a>
+<header class="chrome">
+  <div class="pill" [class.is-open]="open()">
+    <div class="pill-bg" aria-hidden="true"></div>
 
-  <nav class="desktop-nav" aria-label="Primary">
-    @for (link of site.nav; track link.fragment) {
-      <a [routerLink]="['/']" [fragment]="link.fragment">{{ link.label }}</a>
-    }
-  </nav>
+    <div class="bar">
+      <button
+        type="button"
+        class="catch"
+        tabindex="-1"
+        [attr.aria-expanded]="open()"
+        aria-controls="site-menu"
+        (click)="toggle()"
+      >
+        <span class="sr-only">{{ open() ? 'Close menu' : 'Open menu' }}</span>
+      </button>
 
-  <div class="bar-actions">
-    <button
-      type="button"
-      class="theme-toggle"
-      [attr.aria-pressed]="dark()"
-      aria-label="Dark mode"
-      (click)="toggleTheme()"
-    >
-      <span class="theme-knob" aria-hidden="true"></span>
-    </button>
+      <a class="mark" routerLink="/" fragment="top" (click)="close()">
+        <svg class="brand" viewBox="0 0 42 61" aria-hidden="true">
+          <path
+            d="M20.75 11.25C20.75 13.7696 21.7509 16.1859 23.5325 17.9675C25.3141 19.7491 27.7304 20.75 30.25 20.75C32.7696 20.75 35.1859 19.7491 36.9675 17.9675C38.7491 16.1859 39.75 13.7696 39.75 11.25C39.75 8.73044 38.7491 6.31408 36.9675 4.53249C35.1859 2.75089 32.7696 1.75 30.25 1.75C27.7304 1.75 25.3141 2.75089 23.5325 4.53249C21.7509 6.31408 20.75 8.73044 20.75 11.25Z"
+            fill="currentColor"
+            stroke="currentColor"
+            stroke-width="3.5"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M11.25 60.5L19 60.5L20.75 60.5L22.5 60.5L30.25 60.5C33.5007 60.5 36.4035 58.5973 38.4156 55.6321C40.4257 52.6699 41.5 48.7523 41.5 44.75C41.5 40.7477 40.4257 36.8301 38.4156 33.8679C36.4035 30.9027 33.5007 29 30.25 29L22.5 29L22.5 22.5L22.5 20.75L22.5 19L22.5 11.25C22.5 8.26632 21.3147 5.40483 19.205 3.29505C17.0952 1.18527 14.2337 1.24435e-06 11.25 9.83506e-07C8.26632 7.22664e-07 5.40484 1.18527 3.29505 3.29505C1.18527 5.40483 4.56641e-06 8.26632 4.30557e-06 11.25C4.04473e-06 14.2337 1.18527 17.0952 3.29505 19.205C3.884 19.7939 4.53153 20.3108 5.22394 20.75C4.53153 21.1892 3.884 21.7061 3.29505 22.2951C1.18527 24.4048 2.90538e-06 27.2663 2.64454e-06 30.25C2.3837e-06 33.2337 1.18527 36.0952 3.29505 38.205C3.884 38.7939 4.53153 39.3108 5.22394 39.75C4.53153 40.1892 3.884 40.7061 3.29505 41.295C1.18527 43.4048 4.58221e-06 46.2663 4.32137e-06 49.25C4.06052e-06 52.2337 1.18527 55.0952 3.29505 57.205C5.40484 59.3147 8.26632 60.5 11.25 60.5ZM11.25 41.5L19 41.5L19 57L11.25 57C9.19458 57 7.22333 56.1835 5.76993 54.7301C4.31652 53.2767 3.5 51.3054 3.5 49.25C3.5 47.1946 4.31652 45.2233 5.76993 43.7699C7.22333 42.3165 9.19458 41.5 11.25 41.5ZM22.5 41.5L22.5 39.75L22.5 38L22.5 32.5L30.25 32.5C32.0384 32.5 33.9684 33.5473 35.5194 35.8331C37.0726 38.122 38 41.3262 38 44.75C38 48.1738 37.0726 51.378 35.5194 53.6669C33.9683 55.9527 32.0384 57 30.25 57L22.5 57L22.5 41.5ZM11.25 22.5L19 22.5L19 29L19 30.75L19 38L11.25 38C9.19458 38 7.22333 37.1835 5.76993 35.7301C4.31652 34.2767 3.5 32.3054 3.5 30.25C3.5 28.1946 4.31652 26.2233 5.76993 24.7699C7.22333 23.3165 9.19458 22.5 11.25 22.5ZM19 19L11.25 19C9.19458 19 7.22333 18.1835 5.76993 16.7301C4.31652 15.2767 3.5 13.3054 3.5 11.25C3.5 9.19457 4.31652 7.22333 5.76993 5.76992C7.22333 4.31651 9.19458 3.5 11.25 3.5C13.3054 3.5 15.2767 4.31651 16.7301 5.76993C18.1835 7.22333 19 9.19457 19 11.25L19 19Z"
+            fill="currentColor"
+          />
+        </svg>
+        <span class="sr-only">{{ site.name }}, home</span>
+      </a>
 
-    <a class="cta bar-cta" routerLink="/" fragment="contact" appMagnetic>Get in touch</a>
+      <button
+        type="button"
+        class="theme-toggle"
+        [attr.aria-pressed]="dark()"
+        aria-label="Dark mode"
+        (click)="toggleTheme()"
+      >
+        <span class="theme-knob" aria-hidden="true"></span>
+      </button>
 
-    <button
-      type="button"
-      class="burger"
-      [attr.aria-expanded]="open()"
-      aria-controls="site-menu"
-      (click)="toggle()"
-    >
-      <span class="burger-icon" [class.is-open]="open()" aria-hidden="true"></span>
-      <span class="sr-only">{{ open() ? 'Close menu' : 'Open menu' }}</span>
-    </button>
+      <button
+        type="button"
+        class="burger"
+        [attr.aria-expanded]="open()"
+        aria-controls="site-menu"
+        (click)="toggle()"
+      >
+        <span class="bars" [class.is-open]="open()" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+        <span class="sr-only">{{ open() ? 'Close menu' : 'Open menu' }}</span>
+      </button>
+    </div>
+
+    <div class="menu" id="site-menu">
+      <nav aria-label="Primary" [attr.inert]="open() ? null : ''">
+        @for (link of site.nav; track link.fragment; let index = $index) {
+          <a
+            class="item"
+            [style.--i]="index"
+            [routerLink]="['/']"
+            [fragment]="link.fragment"
+            (click)="close()"
+          >
+            <span class="wash" aria-hidden="true"></span>
+            <span class="hairline" aria-hidden="true"></span>
+            <svg class="pixel" viewBox="0 0 10 10" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M2 8H0V10H2V8ZM4 6H2V8H4V6ZM6 8H4V10H6V8ZM10 8H8V10H10V8ZM8 6H6V8H8V6ZM6 4H4V6H6V4ZM10 4H8V6H10V4ZM2 4H0V6H2V4ZM8 2H6V4H8V2ZM4 2H2V4H4V2ZM6 0H4V2H6V0ZM2 0H0V2H2V0ZM10 0H8V2H10V0Z"
+              />
+            </svg>
+            <span class="label">{{ link.label }}</span>
+          </a>
+        }
+      </nav>
+    </div>
   </div>
 
-  <div class="menu" id="site-menu" [hidden]="!open()">
-    <nav aria-label="Mobile">
-      @for (link of site.nav; track link.fragment) {
-        <a [routerLink]="['/']" [fragment]="link.fragment" (click)="close()">{{ link.label }}</a>
-      }
-    </nav>
-    <a class="menu-cta" routerLink="/" fragment="contact" (click)="close()">Get in touch</a>
-  </div>
+  <a class="touch" routerLink="/" fragment="contact" (click)="close()">Get in touch</a>
+
+  <button
+    type="button"
+    class="scrim"
+    [class.is-on]="open()"
+    tabindex="-1"
+    aria-label="Close menu"
+    (click)="close()"
+  ></button>
 </header>

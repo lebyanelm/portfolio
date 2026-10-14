@@ -329,13 +329,6 @@ export const logos: LogoStudy[] = [
       ),
       vigaPhoto('spread', 'Open Viga magazine on a wooden table', 'Spread'),
     ],
-    card: {
-      src: 'logos/mockups/card-viga.jpg',
-      alt: 'Viga business card template, front and back, on a wooden table',
-      caption: 'Business card',
-      width: 1400,
-      height: 933,
-    },
     cardFiles: cardFiles('viga'),
   },
 ];

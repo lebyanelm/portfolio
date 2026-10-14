@@ -35,10 +35,10 @@
 :host(.on-dark) ::ng-deep .roast { fill: #fff8e7; }
 :host(.on-dark) ::ng-deep .roast-line { stroke: #fff8e7; }
 :host(.on-dark) ::ng-deep .pine { fill: #d7ebe3; }
-:host(.on-dark) ::ng-deep .paper { fill: #14160f; }
+:host(.on-dark) ::ng-deep .paper { fill: #000; }
 
 :host-context(html[data-theme='dark']) :host:not(.on-light) { color: #f6f3ec; }
 :host-context(html[data-theme='dark']) :host:not(.on-light) ::ng-deep .roast { fill: #fff8e7; }
 :host-context(html[data-theme='dark']) :host:not(.on-light) ::ng-deep .roast-line { stroke: #fff8e7; }
 :host-context(html[data-theme='dark']) :host:not(.on-light) ::ng-deep .pine { fill: #d7ebe3; }
-:host-context(html[data-theme='dark']) :host:not(.on-light) ::ng-deep .paper { fill: #14160f; }
+:host-context(html[data-theme='dark']) :host:not(.on-light) ::ng-deep .paper { fill: #000; }

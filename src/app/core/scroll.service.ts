@@ -10,6 +10,7 @@ export class ScrollService {
   private started = false;
   private desktopMq?: MediaQueryList;
   private reduceMq?: MediaQueryList;
+  private readonly scrollListeners = new Set<(top: number) => void>();
 
   private readonly onTick = (time: number): void => {
     this.lenis?.raf(time * 1000);
@@ -78,6 +79,11 @@ export class ScrollService {
     this.lenis?.resize();
   }
 
+  onScroll(listener: (top: number) => void): () => void {
+    this.scrollListeners.add(listener);
+    return () => this.scrollListeners.delete(listener);
+  }
+
   destroy(): void {
     this.desktopMq?.removeEventListener('change', this.onPreference);
     this.reduceMq?.removeEventListener('change', this.onPreference);
@@ -96,7 +102,10 @@ export class ScrollService {
       anchors: true,
       stopInertiaOnNavigate: true,
     });
-    this.lenis.on('scroll', () => ScrollTrigger.update());
+    this.lenis.on('scroll', (instance) => {
+      ScrollTrigger.update();
+      this.publish(instance.scroll);
+    });
     if (!this.tickerOn) {
       gsap.ticker.add(this.onTick);
       gsap.ticker.lagSmoothing(0);
@@ -111,6 +120,10 @@ export class ScrollService {
     }
     this.lenis?.destroy();
     this.lenis = undefined;
+  }
+
+  private publish(top: number): void {
+    this.scrollListeners.forEach((listener) => listener(top));
   }
 
   private syncRoot(): void {

@@ -80,7 +80,7 @@
           root.style.colorScheme = theme;
           var themeMeta = document.querySelector('meta[name="theme-color"]');
           if (themeMeta)
-            themeMeta.setAttribute('content', theme === 'dark' ? '#14160f' : '#f3efe7');
+            themeMeta.setAttribute('content', theme === 'dark' ? '#000000' : '#f3efe7');
           var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
           var desktop = window.matchMedia('(min-width: 900px)').matches;
           var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
@@ -99,8 +99,8 @@
     <style>
       :root[data-theme='dark'] {
         color-scheme: dark;
-        --paper: #14160f;
-        --paper-2: #22281e;
+        --paper: #000;
+        --paper-2: #000;
         --ink: #f6f1e8;
         --ink-soft: #e4dccf;
         --muted: #cfc6b6;
@@ -108,7 +108,7 @@
         --forest: #245443;
         --on-forest: #f6f1e8;
         --mango-deep: #ffb199;
-        --inverse: #0b0d0a;
+        --inverse: #000;
         --on-inverse: #f6f1e8;
         --scrollbar: #6d675c;
       }

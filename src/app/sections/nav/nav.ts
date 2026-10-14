@@ -1,13 +1,12 @@
 import { afterNextRender, Component, ElementRef, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { site as content } from '../../data/site';
-import { Magnetic } from '../../core/magnetic';
 import { ScrollService } from '../../core/scroll.service';
 import { applyTheme, persistTheme, storedTheme, systemTheme } from '../../core/theme';
 
 @Component({
   selector: 'app-nav',
-  imports: [Magnetic, RouterLink],
+  imports: [RouterLink],
   templateUrl: './nav.html',
   styleUrl: './nav.scss',
 })
@@ -20,19 +19,12 @@ export class Nav {
 
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly scroll = inject(ScrollService);
-  private desktopMq?: MediaQueryList;
   private schemeMq?: MediaQueryList;
-
-  private readonly onScroll = (): void => {
-    this.host.nativeElement.classList.toggle('is-scrolled', window.scrollY > 8);
-  };
+  private unlistenScroll?: () => void;
+  private anchor = 0;
 
   private readonly onKey = (event: KeyboardEvent): void => {
     if (event.key === 'Escape') this.close();
-  };
-
-  private readonly onDesktop = (event: MediaQueryListEvent): void => {
-    if (event.matches) this.close();
   };
 
   private readonly onScheme = (): void => {
@@ -42,23 +34,26 @@ export class Nav {
     this.dark.set(theme === 'dark');
   };
 
+  private readonly onWindowScroll = (): void => {
+    this.onScroll(window.scrollY);
+  };
+
   constructor() {
     afterNextRender(() => {
-      this.onScroll();
-      window.addEventListener('scroll', this.onScroll, { passive: true });
       document.addEventListener('keydown', this.onKey);
-      this.desktopMq = window.matchMedia('(min-width: 980px)');
-      this.desktopMq.addEventListener('change', this.onDesktop);
+      window.addEventListener('scroll', this.onWindowScroll, { passive: true });
+      this.unlistenScroll = this.scroll.onScroll((top) => this.onScroll(top));
       this.schemeMq = window.matchMedia('(prefers-color-scheme: dark)');
       this.schemeMq.addEventListener('change', this.onScheme);
       this.dark.set(document.documentElement.dataset['theme'] === 'dark');
+      this.anchor = window.scrollY;
     });
   }
 
   ngOnDestroy(): void {
-    window.removeEventListener('scroll', this.onScroll);
     document.removeEventListener('keydown', this.onKey);
-    this.desktopMq?.removeEventListener('change', this.onDesktop);
+    window.removeEventListener('scroll', this.onWindowScroll);
+    this.unlistenScroll?.();
     this.schemeMq?.removeEventListener('change', this.onScheme);
     document.body.classList.remove('menu-open');
   }
@@ -71,6 +66,7 @@ export class Nav {
 
   protected toggle(): void {
     this.open.update((value) => !value);
+    if (this.open()) this.anchor = window.scrollY;
     this.sync();
   }
 
@@ -78,6 +74,14 @@ export class Nav {
     if (!this.open()) return;
     this.open.set(false);
     this.sync();
+  }
+
+  private onScroll(top: number): void {
+    if (!this.open()) {
+      this.anchor = top;
+      return;
+    }
+    if (Math.abs(top - this.anchor) > 20) this.close();
   }
 
   private sync(): void {
