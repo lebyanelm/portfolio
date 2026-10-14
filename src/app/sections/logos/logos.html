@@ -11,7 +11,7 @@
       <ul class="grid">
         @for (logo of group.items; track logo.id) {
           <li>
-            <a class="tile" [routerLink]="['/work', logo.id]" data-cursor="View">
+            <a class="tile" [routerLink]="['/work', logo.id]" data-cursor="View project">
               <app-logo-mark class="tile-mark" [name]="logo.file" [label]="logo.name" />
               <span class="name">{{ logo.name }}</span>
               <span class="meta-row">

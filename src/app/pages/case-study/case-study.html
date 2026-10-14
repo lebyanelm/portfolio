@@ -1,7 +1,7 @@
 @if (study(); as study) {
   <article class="case" id="top">
     <header class="hero">
-      <a class="back" routerLink="/" fragment="work">
+      <a class="back" routerLink="/" fragment="work" data-cursor="All projects">
         <svg viewBox="0 0 7 7" width="10" height="10" aria-hidden="true">
           <path d="M0 0v7h1V1.707l5.295 5.295.707-.707L1.707 1H7V0H0Z" fill="currentColor" />
         </svg>
@@ -117,9 +117,9 @@
       <footer class="next-case">
         <div class="next-bar">
           <p class="bracket">[ Next case ]</p>
-          <a class="all" routerLink="/" fragment="work">Selected work</a>
+          <a class="all" routerLink="/" fragment="work" data-cursor="All projects">Selected work</a>
         </div>
-        <a class="next-row" [routerLink]="['/work', next.id]" data-cursor="View">
+        <a class="next-row" [routerLink]="['/work', next.id]" data-cursor="Next project">
           <span class="next-copy">
             <span class="next-kicker">Next</span>
             <strong>{{ next.name }}</strong>
@@ -139,7 +139,7 @@
 } @else {
   <section class="case missing" id="top">
     <h1>That project is not in the list.</h1>
-    <a class="back" routerLink="/" fragment="work">Selected work</a>
+    <a class="back" routerLink="/" fragment="work" data-cursor="All projects">Selected work</a>
   </section>
   <app-site-footer />
 }

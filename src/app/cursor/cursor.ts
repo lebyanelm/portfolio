@@ -47,11 +47,12 @@ export class Cursor {
       if (text === current) return;
       current = text;
       label.textContent = text;
-      const wide = text.length > 8;
+      const pill = text.length > 7;
+      const width = pill ? Math.min(220, 36 + text.length * 13) : 108;
       gsap.to(blob, {
-        width: wide ? 148 : 108,
-        height: wide ? 72 : 108,
-        borderRadius: wide ? 999 : 54,
+        width,
+        height: pill ? 58 : 108,
+        borderRadius: pill ? 999 : 54,
         duration: 0.5,
         ease: 'power3.out',
         overwrite: 'auto',
@@ -87,15 +88,29 @@ function labelFor(target: EventTarget | null): string {
   if (!el) return '';
   const explicit = el.getAttribute('data-cursor');
   if (explicit) return clip(explicit);
-  if (el instanceof HTMLAnchorElement) {
-    const href = el.getAttribute('href') ?? '';
-    if (href.startsWith('mailto:')) return 'Email';
-    if (el.hasAttribute('download')) return 'Download';
+
+  const href = (el.getAttribute('href') ?? '').toLowerCase();
+  const fragment = href.split('#')[1]?.split('?')[0] ?? '';
+  const aria = (el.getAttribute('aria-label') ?? '').toLowerCase();
+
+  if (el.classList.contains('mark')) return 'Go home';
+  if (href.includes('github.com')) return 'View my code';
+  if (href.includes('linkedin.com')) return 'Follow me';
+  if (href.includes('cv')) return 'Hire me';
+  if (el.hasAttribute('download')) return 'Take the file';
+  if (href.startsWith('mailto:')) return 'Say hello';
+  if (href.includes('/work/')) return 'View project';
+  if (fragment === 'work') return 'See the work';
+  if (fragment === 'about') return 'Meet me';
+  if (fragment === 'process') return 'How I work';
+  if (fragment === 'contact') return "Let's talk";
+  if (fragment === 'top' || aria.includes('top')) return 'Back up';
+  if (el.classList.contains('theme-toggle') || aria.includes('dark') || aria.includes('theme')) return 'Flip theme';
+  if (el.getAttribute('aria-controls') === 'site-menu') {
+    return el.getAttribute('aria-expanded') === 'true' ? 'Close' : 'Open menu';
   }
-  const aria = el.getAttribute('aria-label');
-  const text = (aria || el.textContent || '').replace(/\s+/g, ' ').trim();
-  if (!text) return 'Open';
-  return clip(text);
+  if (aria.includes('close')) return 'Close';
+  return '';
 }
 
 function clip(value: string): string {
