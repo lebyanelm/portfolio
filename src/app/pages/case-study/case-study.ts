@@ -39,6 +39,7 @@ export class CaseStudy {
   protected readonly discipline = signal('Logo');
   protected readonly meta = signal<MetaRow[]>([]);
   protected readonly blocks = signal<Block[]>([]);
+  protected readonly heroShot = signal<Shot | null>(null);
 
   private readonly route = inject(ActivatedRoute);
   private readonly title = inject(Title);
@@ -54,6 +55,7 @@ export class CaseStudy {
       this.next.set(study ? (adjacentStudies(slug)?.next ?? null) : null);
       this.discipline.set(study ? (disciplineChip[study.id] ?? 'Logo') : 'Logo');
       this.meta.set(study ? metaFor(study, project) : []);
+      this.heroShot.set(study ? heroShotFor(study) : null);
       this.blocks.set(study ? blocksFor(study, project) : []);
       this.title.setTitle(study ? `${study.name} — Libby Lebyane` : 'Project not found — Libby Lebyane');
       afterNextRender(() => this.setupMotion(), { injector: this.injector });
@@ -90,6 +92,11 @@ export class CaseStudy {
   }
 }
 
+function heroShotFor(study: LogoStudy): Shot | null {
+  const picture = study.mockups.find((item) => item.hero);
+  return picture ? { ...picture, sizes: '100vw' } : null;
+}
+
 function metaFor(study: LogoStudy, project: Project | null): MetaRow[] {
   const rows: MetaRow[] = [];
   if (study.tag === 'Client') rows.push({ label: 'Client', value: study.name });
@@ -110,7 +117,7 @@ function blocksFor(study: LogoStudy, project: Project | null): Block[] {
     seen.add(picture.src);
     pictures.push(picture);
   };
-  study.mockups.forEach(add);
+  study.mockups.filter((picture) => !picture.hero).forEach(add);
   project?.gallery.forEach((item) => {
     if (!item.src) return;
     add({

@@ -6,6 +6,20 @@
   padding: calc(var(--nav-h) + clamp(7.5rem, 14vw, 12rem)) var(--gutter) 0;
 }
 
+.hero:has(.hero-visual) {
+  padding-top: calc(var(--nav-h) + clamp(3.5rem, 8vw, 6.5rem));
+}
+
+.hero-visual {
+  margin: clamp(1.5rem, 3.5vh, 2.25rem) calc(var(--gutter) * -1) 0;
+}
+
+.hero-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .back,
 .bracket,
 .tags,

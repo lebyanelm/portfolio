@@ -12,6 +12,28 @@
         <li>{{ study.tag }}</li>
         <li>{{ discipline() }}</li>
       </ul>
+      @if (heroShot(); as hero) {
+        <figure class="hero-visual">
+          <picture>
+            @if (hero.avif) {
+              <source type="image/avif" [attr.srcset]="hero.avif" [attr.sizes]="hero.sizes" />
+            }
+            @if (hero.webp) {
+              <source type="image/webp" [attr.srcset]="hero.webp" [attr.sizes]="hero.sizes" />
+            }
+            <img
+              [src]="hero.src"
+              [attr.srcset]="hero.jpg || null"
+              [attr.sizes]="hero.jpg ? hero.sizes : null"
+              [alt]="hero.alt"
+              [width]="hero.width"
+              [height]="hero.height"
+              loading="eager"
+              decoding="async"
+            />
+          </picture>
+        </figure>
+      }
     </header>
 
     <section class="intro reveal">

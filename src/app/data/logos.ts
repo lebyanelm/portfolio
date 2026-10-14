@@ -10,6 +10,8 @@ export interface LogoPicture {
   avif?: string;
   webp?: string;
   jpg?: string;
+  /** Full-width lead photograph, shown in the case hero. */
+  hero?: boolean;
 }
 
 export interface LogoFile {
@@ -35,6 +37,23 @@ const cardFiles = (id: string): LogoFile[] => [
   { label: 'Back SVG', href: `logos/cards/${id}-back.svg` },
   { label: 'Back PDF', href: `logos/cards/${id}-back.pdf` },
 ];
+
+const vigaSrcset = (name: string, type: 'avif' | 'webp' | 'jpg'): string =>
+  [640, 960, 1280, 1600, 2048]
+    .map((width) => `logos/mockups/viga/${name}-${width}.${type} ${width}w`)
+    .join(', ');
+
+const vigaPhoto = (name: string, alt: string, caption: string, hero = false): LogoPicture => ({
+  src: `logos/mockups/viga/${name}-1600.jpg`,
+  alt,
+  caption,
+  width: 2048,
+  height: 1152,
+  avif: vigaSrcset(name, 'avif'),
+  webp: vigaSrcset(name, 'webp'),
+  jpg: vigaSrcset(name, 'jpg'),
+  hero,
+});
 
 export const logos: LogoStudy[] = [
   {
@@ -296,13 +315,19 @@ export const logos: LogoStudy[] = [
     description:
       'I designed the logo for Viga, a magazine brand sharing local South African stories in the space of medical marijuana use.',
     mockups: [
-      {
-        src: 'logos/mockups/viga.jpg',
-        alt: 'Viga magazine cover on a table, using a forest photograph and the headline Local stories',
-        caption: 'Cover',
-        width: 1400,
-        height: 933,
-      },
+      vigaPhoto(
+        'rattan',
+        'Viga magazine open on a rattan chair, cover line Local stories',
+        'On rattan',
+        true,
+      ),
+      vigaPhoto('stack', 'Stack of Viga magazines on a wooden surface', 'Stack'),
+      vigaPhoto(
+        'flatlay',
+        'Flat lay of a Viga magazine with dried flowers and a lighter',
+        'Flat lay',
+      ),
+      vigaPhoto('spread', 'Open Viga magazine on a wooden table', 'Spread'),
     ],
     card: {
       src: 'logos/mockups/card-viga.jpg',
