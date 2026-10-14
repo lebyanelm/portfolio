@@ -6,11 +6,12 @@ import { nextProject, projectBySlug, type Project } from '../../data/projects';
 import { isReducedMotion, revealLines } from '../../core/motion';
 import { ProjectVisual } from '../../sections/work/project-visual';
 import { SiteFooter } from '../../sections/footer/footer';
+import { LogoMark } from '../../marks/logo-mark';
 import gsap from 'gsap';
 
 @Component({
   selector: 'app-case-study',
-  imports: [RouterLink, ProjectVisual, SiteFooter],
+  imports: [RouterLink, ProjectVisual, SiteFooter, LogoMark],
   templateUrl: './case-study.html',
   styleUrl: './case-study.scss',
 })

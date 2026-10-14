@@ -20,6 +20,7 @@ export interface GalleryItem {
   caption: string;
   width?: number;
   height?: number;
+  mark?: string;
 }
 
 export interface Swatch {
@@ -52,6 +53,10 @@ export interface Project {
   coverWidth?: number;
   coverHeight?: number;
   thumb?: string;
+  /** SVG logo id in public/logos, used instead of a raster thumb and cover. */
+  mark?: string;
+  /** Force the mark's ink for a surface that does not follow the site theme. */
+  markTone?: 'light' | 'dark';
 }
 
 export const projects: Project[] = [
@@ -67,13 +72,13 @@ export const projects: Project[] = [
     stack: ['Logo', 'Colour', 'Packaging', 'Poppins'],
     placeholder: false,
     visual: 'arcs',
-    palette: { bg: '#2E1503', fg: '#FFF8E7', accent: '#FFD23C' },
+    palette: { bg: '#FFF8E7', fg: '#2E1503', accent: '#FFD23C' },
     timeline: '2026',
     tools: ['Poppins', 'Brand colour', 'Packaging layout'],
     deliverables: ['Logo', 'Brand sheet', 'Product labels', 'Packaging'],
-    thumb: 'work/broilerbliss/logo-dark.png',
-    cover: 'work/broilerbliss/logo-dark.png',
-    coverAlt: 'BroilerBliss logo in yolk yellow and farm cream on roast brown',
+    mark: 'broilerbliss',
+    markTone: 'light',
+    coverAlt: 'BroilerBliss logo',
     coverWidth: 1400,
     coverHeight: 716,
     swatches: [
@@ -96,18 +101,9 @@ export const projects: Project[] = [
       'I delivered the logo, the brand sheet, labels for whole fresh chicken, a portions braai pack, and frozen whole chicken, plus a crate sticker, a tray sleeve, and a tray mockup. The line on the work is the farm’s own: Fresh from our farm to your table.',
     gallery: [
       {
-        src: 'work/broilerbliss/logo-colour.png',
-        alt: 'Full-colour BroilerBliss logo with a yellow chicken and roast-brown wordmark',
-        caption: 'Logo, full colour',
-        width: 1400,
-        height: 716,
-      },
-      {
-        src: 'work/broilerbliss/logo-dark.png',
-        alt: 'BroilerBliss logo reversed for a dark background',
-        caption: 'Logo on dark',
-        width: 1400,
-        height: 716,
+        mark: 'broilerbliss',
+        alt: 'BroilerBliss logo',
+        caption: 'Logo',
       },
       {
         src: 'work/broilerbliss/brand-sheet.png',
@@ -176,9 +172,9 @@ export const projects: Project[] = [
     timeline: 'Paused',
     tools: ['Angular', 'Flask/FastAPI', 'PostgreSQL', 'Heroku'],
     deliverables: ['Homepage showcase', 'Dashboard', 'Payments', 'Identity verification'],
-    thumb: 'work/hetchfund/logo-on-dark.png',
-    cover: 'work/hetchfund/logo-on-dark.png',
-    coverAlt: 'Hetchfund logo, green and orange leaf marks above a light wordmark',
+    mark: 'hetchfund',
+    markTone: 'dark',
+    coverAlt: 'Hetchfund logo',
     coverWidth: 235,
     coverHeight: 103,
     swatches: [

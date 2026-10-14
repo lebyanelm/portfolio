@@ -2,9 +2,11 @@ import { afterNextRender, Component, ElementRef, inject } from '@angular/core';
 import gsap from 'gsap';
 import { site as content } from '../../data/site';
 import { bindViewport, isReducedMotion, pad } from '../../core/motion';
+import { LogoMark } from '../../marks/logo-mark';
 
 @Component({
   selector: 'app-services',
+  imports: [LogoMark],
   templateUrl: './services.html',
   styleUrl: './services.scss',
 })
@@ -29,7 +31,7 @@ export class Services {
     const root = this.host.nativeElement;
     this.mm = bindViewport((mode) => {
       if (mode !== 'desktop') {
-        const shots = root.querySelectorAll<HTMLElement>('.shot img');
+        const shots = root.querySelectorAll<HTMLElement>('.shot .parallax');
         shots.forEach((img, index) => {
           const from = index % 2 === 0 ? 8 : -8;
           gsap.fromTo(
@@ -78,7 +80,7 @@ export class Services {
       });
 
       panels.forEach((panel, index) => {
-        const shots = panel.querySelectorAll<HTMLElement>('.shot img');
+        const shots = panel.querySelectorAll<HTMLElement>('.shot .parallax');
         const at = index === 0 ? 0 : index - 1;
         shots.forEach((img, shot) => {
           const from = shot % 2 === 0 ? 12 : -10;

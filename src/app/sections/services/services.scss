@@ -88,6 +88,10 @@
   place-items: center;
   height: 100%;
   overflow: hidden;
+  background: transparent;
+}
+
+.shot:not(:has(.is-mark)) {
   background: color-mix(in srgb, var(--paper) 82%, transparent);
 }
 
@@ -98,13 +102,26 @@
   object-position: center top;
 }
 
-.shot img.is-mark {
-  width: auto;
-  height: auto;
+.shot img.is-mark,
+.shot .is-mark {
+  width: 86%;
+  height: 70%;
   max-width: 86%;
   max-height: 70%;
   object-fit: contain;
   object-position: center;
+}
+
+.more {
+  margin-top: 1.1rem;
+}
+
+.more a {
+  color: inherit;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .meta {

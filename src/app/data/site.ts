@@ -18,9 +18,10 @@ export interface Fact {
 export type ServiceTheme = 'paper' | 'forest' | 'mango';
 
 export interface ServiceImage {
-  src: string;
+  src?: string;
   alt: string;
   fit?: 'contain';
+  mark?: string;
 }
 
 export interface Service {
@@ -164,24 +165,10 @@ export const site: SiteContent = {
       points: ['Logos', 'Colour', 'Type', 'Brand rules'],
       theme: 'paper',
       images: [
-        {
-          src: 'work/broilerbliss/logo-colour.png',
-          alt: 'Full-colour BroilerBliss logo',
-          fit: 'contain',
-        },
-        {
-          src: 'work/broilerbliss/brand-sheet.png',
-          alt: 'BroilerBliss brand sheet',
-        },
-        {
-          src: 'work/hetchfund/logo.png',
-          alt: 'Hetchfund logo',
-          fit: 'contain',
-        },
-        {
-          src: 'work/broilerbliss/label-fresh.png',
-          alt: 'BroilerBliss whole fresh chicken label',
-        },
+        { mark: 'fried-corner', alt: 'Fried Corner logo', fit: 'contain' },
+        { mark: 'viga', alt: 'Viga logo', fit: 'contain' },
+        { mark: 'broilerbliss', alt: 'BroilerBliss logo', fit: 'contain' },
+        { mark: 'hetchfund', alt: 'Hetchfund logo', fit: 'contain' },
       ],
     },
     {

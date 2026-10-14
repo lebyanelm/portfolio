@@ -26,7 +26,13 @@
             [style.--accent]="project.palette.accent"
           >
             <div class="art">
-              @if (project.thumb) {
+              @if (project.mark) {
+                <app-logo-mark
+                  class="card-mark"
+                  [name]="project.mark"
+                  [tone]="project.markTone ?? 'auto'"
+                />
+              } @else if (project.thumb) {
                 <img class="card-photo" [src]="project.thumb" alt="" />
               } @else {
                 <app-project-visual class="art-media" [visual]="project.visual" />

@@ -26,16 +26,28 @@
                   <li>{{ point }}</li>
                 }
               </ul>
+              @if (service.id === 'logo') {
+                <p class="more"><a href="#logos">See the logos</a></p>
+              }
             </div>
             <ul class="collage" [attr.data-count]="service.images.length">
-              @for (image of service.images; track image.src) {
+              @for (image of service.images; track image.mark ?? image.src) {
                 <li>
                   <div class="shot">
-                    <img
-                      [src]="image.src"
-                      [alt]="image.alt"
-                      [class.is-mark]="image.fit === 'contain'"
-                    />
+                    @if (image.mark) {
+                      <app-logo-mark
+                        class="parallax is-mark"
+                        [name]="image.mark"
+                        [label]="image.alt"
+                      />
+                    } @else if (image.src) {
+                      <img
+                        class="parallax"
+                        [src]="image.src"
+                        [alt]="image.alt"
+                        [class.is-mark]="image.fit === 'contain'"
+                      />
+                    }
                   </div>
                 </li>
               }

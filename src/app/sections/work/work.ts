@@ -6,10 +6,11 @@ import { projects as projectList } from '../../data/projects';
 import { site as content } from '../../data/site';
 import { bindViewport, isReducedMotion, pad, revealLines } from '../../core/motion';
 import { ProjectVisual } from './project-visual';
+import { LogoMark } from '../../marks/logo-mark';
 
 @Component({
   selector: 'app-work',
-  imports: [ProjectVisual, RouterLink],
+  imports: [ProjectVisual, RouterLink, LogoMark],
   templateUrl: './work.html',
   styleUrl: './work.scss',
 })
@@ -91,7 +92,7 @@ export class Work {
       });
 
       cards.forEach((card) => {
-        const art = card.querySelector('.art-media');
+        const art = card.querySelector('.art-media, .card-mark');
         if (!art) return;
         gsap.fromTo(
           art,

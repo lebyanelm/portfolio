@@ -12,7 +12,14 @@
         [style.background]="project.palette.bg"
         [style.color]="project.palette.fg"
       >
-        @if (project.cover) {
+        @if (project.mark) {
+          <app-logo-mark
+            class="cover-mark"
+            [name]="project.mark"
+            [label]="project.coverAlt ?? project.title"
+            [tone]="project.markTone ?? 'auto'"
+          />
+        } @else if (project.cover) {
           <img
             [src]="project.cover"
             [alt]="project.coverAlt ?? ''"
@@ -73,7 +80,14 @@
         @for (item of project.gallery; track item.caption) {
           <li>
             <figure [style.background]="project.palette.bg" [style.color]="project.palette.fg">
-              @if (item.src) {
+              @if (item.mark) {
+                <app-logo-mark
+                  class="gallery-mark"
+                  [name]="item.mark"
+                  [label]="item.alt"
+                  [tone]="project.markTone ?? 'auto'"
+                />
+              } @else if (item.src) {
                 <img [src]="item.src" [alt]="item.alt" [width]="item.width" [height]="item.height" />
               } @else {
                 <app-project-visual [visual]="project.visual" />

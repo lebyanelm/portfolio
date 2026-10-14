@@ -1,0 +1,10 @@
+<span
+  class="frame"
+  [attr.role]="label() ? 'img' : null"
+  [attr.aria-label]="label() || null"
+  [attr.aria-hidden]="label() ? null : true"
+>
+  @if (svg(); as markup) {
+    <span class="svg" [innerHTML]="markup"></span>
+  }
+</span>

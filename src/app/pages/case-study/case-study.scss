@@ -76,6 +76,18 @@ h1 {
   height: auto;
 }
 
+.cover-mark {
+  width: min(78%, 34rem);
+  height: min(28vh, 12rem);
+  margin: 1.5rem auto;
+}
+
+.gallery-mark {
+  width: min(86%, 28rem);
+  height: 10rem;
+  margin: 1.25rem auto;
+}
+
 .cover app-project-visual,
 .gallery app-project-visual {
   display: block;

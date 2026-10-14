@@ -1,0 +1,44 @@
+:host {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  min-height: 0;
+  color: inherit;
+}
+
+.frame,
+.svg {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
+:host ::ng-deep svg {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+:host ::ng-deep .roast { fill: #2e1503; }
+:host ::ng-deep .roast-line { stroke: #2e1503; }
+:host ::ng-deep .pine { fill: #0c302d; }
+:host ::ng-deep .paper { fill: #fff; }
+
+:host(.on-light) { color: #161616; }
+
+:host(.on-dark) { color: #f6f3ec; }
+:host(.on-dark) ::ng-deep .roast { fill: #fff8e7; }
+:host(.on-dark) ::ng-deep .roast-line { stroke: #fff8e7; }
+:host(.on-dark) ::ng-deep .pine { fill: #d7ebe3; }
+:host(.on-dark) ::ng-deep .paper { fill: #14160f; }
+
+:host-context(html[data-theme='dark']) :host:not(.on-light) { color: #f6f3ec; }
+:host-context(html[data-theme='dark']) :host:not(.on-light) ::ng-deep .roast { fill: #fff8e7; }
+:host-context(html[data-theme='dark']) :host:not(.on-light) ::ng-deep .roast-line { stroke: #fff8e7; }
+:host-context(html[data-theme='dark']) :host:not(.on-light) ::ng-deep .pine { fill: #d7ebe3; }
+:host-context(html[data-theme='dark']) :host:not(.on-light) ::ng-deep .paper { fill: #14160f; }
