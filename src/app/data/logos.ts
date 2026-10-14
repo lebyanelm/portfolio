@@ -6,6 +6,10 @@ export interface LogoPicture {
   caption: string;
   width: number;
   height: number;
+  /** Responsive srcset strings. `src` stays the JPEG fallback. */
+  avif?: string;
+  webp?: string;
+  jpg?: string;
 }
 
 export interface LogoFile {

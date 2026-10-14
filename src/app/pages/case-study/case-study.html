@@ -1,101 +1,121 @@
 @if (study(); as study) {
-  <article class="story" id="top">
-    <a class="back" routerLink="/" fragment="work">Selected work</a>
-    <h1>{{ study.name }}</h1>
-    <p class="kicker">
-      <span>{{ study.tag }}</span>
-      @if (chip(); as label) {
-        <span class="discipline">{{ label }}</span>
-      }
-    </p>
-    <app-logo-mark class="story-mark" [name]="study.file" [label]="study.name" />
+  <article class="case" id="top">
+    <header class="hero">
+      <a class="back" routerLink="/" fragment="work">
+        <svg viewBox="0 0 7 7" width="10" height="10" aria-hidden="true">
+          <path d="M0 0v7h1V1.707l5.295 5.295.707-.707L1.707 1H7V0H0Z" fill="currentColor" />
+        </svg>
+        Selected work
+      </a>
+      <h1>{{ study.name }}</h1>
+      <ul class="tags">
+        <li>{{ study.tag }}</li>
+        <li>{{ discipline() }}</li>
+      </ul>
+    </header>
 
-    <div class="prose">
+    <section class="intro reveal">
       <p>{{ study.description }}</p>
-
-      @if (project(); as project) {
-        <h2>Challenge</h2>
-        <p>{{ project.challenge }}</p>
-        <h2>Approach</h2>
-        @for (paragraph of project.approach; track paragraph) {
-          <p>{{ paragraph }}</p>
+      <h2 class="bracket">[ credits ]</h2>
+      <dl>
+        @for (row of meta(); track row.label) {
+          <div>
+            <dt>{{ row.label }}</dt>
+            <dd>{{ row.value }}</dd>
+          </div>
         }
-        @if (project.swatches?.length) {
-          <ul class="swatches">
-            @for (swatch of project.swatches; track swatch.hex) {
-              <li>
-                <span class="swatch" [style.background]="swatch.hex"></span>
-                <span>{{ swatch.name }}</span>
-                <span class="hex">{{ swatch.hex }}</span>
-              </li>
+      </dl>
+    </section>
+
+    @for (block of blocks(); track $index) {
+      @switch (block.kind) {
+        @case ('text') {
+          <section class="copy reveal">
+            <h2 class="bracket">[ {{ block.label }} ]</h2>
+            @for (paragraph of block.paragraphs; track paragraph) {
+              <p>{{ paragraph }}</p>
             }
-          </ul>
+          </section>
         }
-        <h2>Outcome</h2>
-        <p>{{ project.outcome }}</p>
-        <dl class="facts">
-          <div>
-            <dt>Role</dt>
-            <dd>{{ project.role }}</dd>
+        @case ('swatches') {
+          <section class="copy reveal">
+            <h2 class="bracket">[ {{ block.label }} ]</h2>
+            <ul class="swatches">
+              @for (swatch of block.swatches; track swatch.hex) {
+                <li>
+                  <span class="chip" [style.background]="swatch.hex"></span>
+                  <span>{{ swatch.name }}</span>
+                  <span class="hex">{{ swatch.hex }}</span>
+                </li>
+              }
+            </ul>
+          </section>
+        }
+        @case ('files') {
+          <section class="copy reveal">
+            <h2 class="bracket">[ {{ block.label }} ]</h2>
+            <p>{{ block.note }}</p>
+            <ul class="files">
+              @for (file of block.files; track file.href) {
+                <li><a [href]="file.href" download>{{ file.label }}</a></li>
+              }
+            </ul>
+          </section>
+        }
+        @case ('images') {
+          <div class="frames reveal" [class.is-single]="block.shots.length === 1">
+            @for (shot of block.shots; track shot.src) {
+              <figure>
+                <picture>
+                  @if (shot.avif) {
+                    <source type="image/avif" [attr.srcset]="shot.avif" [attr.sizes]="shot.sizes" />
+                  }
+                  @if (shot.webp) {
+                    <source type="image/webp" [attr.srcset]="shot.webp" [attr.sizes]="shot.sizes" />
+                  }
+                  <img
+                    [src]="shot.src"
+                    [attr.srcset]="shot.jpg || null"
+                    [attr.sizes]="shot.jpg ? shot.sizes : null"
+                    [alt]="shot.alt"
+                    [width]="shot.width"
+                    [height]="shot.height"
+                    [attr.loading]="block.eager ? 'eager' : 'lazy'"
+                    decoding="async"
+                  />
+                </picture>
+              </figure>
+            }
           </div>
-          <div>
-            <dt>Timeline</dt>
-            <dd>{{ project.timeline }}</dd>
-          </div>
-          <div>
-            <dt>Tools</dt>
-            <dd>{{ project.tools.join(', ') }}</dd>
-          </div>
-          <div>
-            <dt>Deliverables</dt>
-            <dd>{{ project.deliverables.join(', ') }}</dd>
-          </div>
-        </dl>
+        }
       }
-    </div>
-
-    @for (shot of figures(); track shot.src) {
-      <figure class="wide">
-        <img [src]="shot.src" [alt]="shot.alt" [width]="shot.width" [height]="shot.height" />
-        <figcaption>{{ shot.caption }}</figcaption>
-      </figure>
     }
 
-    @if (study.card; as card) {
-      <figure class="wide">
-        <img [src]="card.src" [alt]="card.alt" [width]="card.width" [height]="card.height" />
-        <figcaption>{{ card.caption }}</figcaption>
-      </figure>
-      @if (study.cardFiles?.length) {
-        <div class="prose files-block">
-          <p class="print-note">Print files, 85 × 55 mm with bleed.</p>
-          <ul class="files">
-            @for (file of study.cardFiles; track file.href) {
-              <li><a [href]="file.href" download>{{ file.label }}</a></li>
-            }
-          </ul>
+    @if (next(); as next) {
+      <footer class="next-case">
+        <div class="next-bar">
+          <p class="bracket">[ Next case ]</p>
+          <a class="all" routerLink="/" fragment="work">Selected work</a>
         </div>
-      }
+        <a class="next-row" [routerLink]="['/work', next.id]" data-cursor="View">
+          <span class="next-copy">
+            <span class="next-kicker">Next</span>
+            <strong>{{ next.name }}</strong>
+          </span>
+          <span class="next-visual">
+            @if (next.mockups[0]; as cover) {
+              <img [src]="cover.src" alt="" width="640" height="420" />
+            } @else {
+              <app-logo-mark [name]="next.file" [label]="next.name" />
+            }
+          </span>
+        </a>
+      </footer>
     }
-
-    <nav class="pager" aria-label="Other projects">
-      @if (previous(); as previous) {
-        <a [routerLink]="['/work', previous.id]" data-cursor="View">
-          <span>Previous</span>
-          <strong>{{ previous.name }}</strong>
-        </a>
-      }
-      @if (next(); as next) {
-        <a class="is-next" [routerLink]="['/work', next.id]" data-cursor="View">
-          <span>Next</span>
-          <strong>{{ next.name }}</strong>
-        </a>
-      }
-    </nav>
   </article>
   <app-site-footer />
 } @else {
-  <section class="story missing" id="top">
+  <section class="case missing" id="top">
     <h1>That project is not in the list.</h1>
     <a class="back" routerLink="/" fragment="work">Selected work</a>
   </section>
