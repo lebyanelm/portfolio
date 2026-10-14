@@ -310,3 +310,72 @@ export const logos: LogoStudy[] = [
     cardFiles: cardFiles('viga'),
   },
 ];
+
+export interface WorkGroup {
+  id: 'logos' | 'websites' | 'apps';
+  title: string;
+  items: LogoStudy[];
+}
+
+const groupOrder: { id: WorkGroup['id']; title: string; ids: string[] }[] = [
+  {
+    id: 'logos',
+    title: 'Logos',
+    ids: [
+      'broilerbliss',
+      'bitsense',
+      'flybak',
+      'fried-corner',
+      'jonjon-constructions',
+      'towards-common-foundry',
+      'viga',
+    ],
+  },
+  {
+    id: 'websites',
+    title: 'Websites',
+    ids: ['hetchfund', 'behind-the-noise', 'chesswars'],
+  },
+  {
+    id: 'apps',
+    title: 'Apps',
+    ids: ['bitbooks', 'doku', 'gift-of-health'],
+  },
+];
+
+const byId = new Map(logos.map((logo) => [logo.id, logo]));
+
+export const workGroups: WorkGroup[] = groupOrder.map((group) => ({
+  id: group.id,
+  title: group.title,
+  items: group.ids.map((id) => {
+    const item = byId.get(id);
+    if (!item) throw new Error(`Missing work item ${id}`);
+    return item;
+  }),
+}));
+
+export const workOrder: LogoStudy[] = workGroups.flatMap((group) => group.items);
+
+/** Shown when a piece also belongs to a second discipline. */
+export const disciplineChip: Record<string, string> = {
+  hetchfund: 'Web + Logo',
+  'behind-the-noise': 'Web + Logo',
+  chesswars: 'Web + Logo',
+  bitbooks: 'App + Logo',
+  doku: 'App + Logo',
+  'gift-of-health': 'App + Logo',
+};
+
+export function studyBySlug(slug: string): LogoStudy | undefined {
+  return byId.get(slug);
+}
+
+export function adjacentStudies(slug: string): { previous: LogoStudy; next: LogoStudy } | undefined {
+  const index = workOrder.findIndex((item) => item.id === slug);
+  if (index < 0) return undefined;
+  return {
+    previous: workOrder[(index - 1 + workOrder.length) % workOrder.length],
+    next: workOrder[(index + 1) % workOrder.length],
+  };
+}

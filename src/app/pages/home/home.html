@@ -3,15 +3,6 @@
 <app-services />
 <app-logos />
 @defer (on idle; prefetch on immediate) {
-  <app-work />
-} @placeholder {
-  <div class="defer-block" aria-hidden="true"></div>
-} @error {
-  <section class="defer-error" aria-live="polite">
-    <p>Selected work did not load. Refresh the page to try again.</p>
-  </section>
-}
-@defer (on idle; prefetch on immediate) {
   <app-process />
 } @placeholder {
   <div class="defer-block defer-short" aria-hidden="true"></div>

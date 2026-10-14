@@ -1,121 +1,103 @@
-@if (project(); as project) {
-  <article class="case" id="top">
-    <header class="case-hero">
-      <a class="back" routerLink="/" fragment="work">All work</a>
-      <p class="index">{{ project.category }} · {{ project.year }}</p>
-      <h1>
-        <span class="line"><span class="line-inner">{{ project.title }}</span></span>
-      </h1>
-      <p class="lede">{{ project.summary }}</p>
-      <figure
-        class="cover"
-        [style.background]="project.palette.bg"
-        [style.color]="project.palette.fg"
-      >
-        @if (project.mark) {
-          <app-logo-mark
-            class="cover-mark"
-            [name]="project.mark"
-            [label]="project.coverAlt ?? project.title"
-            [tone]="project.markTone ?? 'auto'"
-          />
-        } @else if (project.cover) {
-          <img
-            [src]="project.cover"
-            [alt]="project.coverAlt ?? ''"
-            [width]="project.coverWidth"
-            [height]="project.coverHeight"
-          />
-        } @else {
-          <app-project-visual [visual]="project.visual" />
+@if (study(); as study) {
+  <article class="story" id="top">
+    <a class="back" routerLink="/" fragment="work">Selected work</a>
+    <h1>{{ study.name }}</h1>
+    <p class="kicker">
+      <span>{{ study.tag }}</span>
+      @if (chip(); as label) {
+        <span class="discipline">{{ label }}</span>
+      }
+    </p>
+    <app-logo-mark class="story-mark" [name]="study.file" [label]="study.name" />
+
+    <div class="prose">
+      <p>{{ study.description }}</p>
+
+      @if (project(); as project) {
+        <h2>Challenge</h2>
+        <p>{{ project.challenge }}</p>
+        <h2>Approach</h2>
+        @for (paragraph of project.approach; track paragraph) {
+          <p>{{ paragraph }}</p>
         }
+        @if (project.swatches?.length) {
+          <ul class="swatches">
+            @for (swatch of project.swatches; track swatch.hex) {
+              <li>
+                <span class="swatch" [style.background]="swatch.hex"></span>
+                <span>{{ swatch.name }}</span>
+                <span class="hex">{{ swatch.hex }}</span>
+              </li>
+            }
+          </ul>
+        }
+        <h2>Outcome</h2>
+        <p>{{ project.outcome }}</p>
+        <dl class="facts">
+          <div>
+            <dt>Role</dt>
+            <dd>{{ project.role }}</dd>
+          </div>
+          <div>
+            <dt>Timeline</dt>
+            <dd>{{ project.timeline }}</dd>
+          </div>
+          <div>
+            <dt>Tools</dt>
+            <dd>{{ project.tools.join(', ') }}</dd>
+          </div>
+          <div>
+            <dt>Deliverables</dt>
+            <dd>{{ project.deliverables.join(', ') }}</dd>
+          </div>
+        </dl>
+      }
+    </div>
+
+    @for (shot of figures(); track shot.src) {
+      <figure class="wide">
+        <img [src]="shot.src" [alt]="shot.alt" [width]="shot.width" [height]="shot.height" />
+        <figcaption>{{ shot.caption }}</figcaption>
       </figure>
-    </header>
-
-    <dl class="meta">
-      <div>
-        <dt>Role</dt>
-        <dd>{{ project.role }}</dd>
-      </div>
-      <div>
-        <dt>Timeline</dt>
-        <dd>{{ project.timeline }}</dd>
-      </div>
-      <div>
-        <dt>Tools</dt>
-        <dd>{{ project.tools.join(', ') }}</dd>
-      </div>
-      <div>
-        <dt>Deliverables</dt>
-        <dd>{{ project.deliverables.join(', ') }}</dd>
-      </div>
-    </dl>
-
-    <section class="block" aria-labelledby="challenge-heading">
-      <h2 id="challenge-heading">Challenge</h2>
-      <p>{{ project.challenge }}</p>
-    </section>
-
-    <section class="block" aria-labelledby="approach-heading">
-      <h2 id="approach-heading">Approach</h2>
-      @for (paragraph of project.approach; track paragraph) {
-        <p>{{ paragraph }}</p>
-      }
-      @if (project.swatches?.length) {
-        <ul class="swatches">
-          @for (swatch of project.swatches; track swatch.hex) {
-            <li>
-              <span class="chip" [style.background]="swatch.hex"></span>
-              <span class="swatch-name">{{ swatch.name }}</span>
-              <span class="hex">{{ swatch.hex }}</span>
-            </li>
-          }
-        </ul>
-      }
-    </section>
-
-    <section class="block" aria-labelledby="gallery-heading">
-      <h2 id="gallery-heading">Gallery</h2>
-      <ul class="gallery">
-        @for (item of project.gallery; track item.caption) {
-          <li>
-            <figure [style.background]="project.palette.bg" [style.color]="project.palette.fg">
-              @if (item.mark) {
-                <app-logo-mark
-                  class="gallery-mark"
-                  [name]="item.mark"
-                  [label]="item.alt"
-                  [tone]="project.markTone ?? 'auto'"
-                />
-              } @else if (item.src) {
-                <img [src]="item.src" [alt]="item.alt" [width]="item.width" [height]="item.height" />
-              } @else {
-                <app-project-visual [visual]="project.visual" />
-              }
-              <figcaption>{{ item.caption }}</figcaption>
-            </figure>
-          </li>
-        }
-      </ul>
-    </section>
-
-    <section class="block" aria-labelledby="outcome-heading">
-      <h2 id="outcome-heading">Outcome</h2>
-      <p>{{ project.outcome }}</p>
-    </section>
-
-    @if (next(); as next) {
-      <a class="next" data-cursor="View" [routerLink]="['/work', next.slug]">
-        <span>Next project</span>
-        <strong>{{ next.title }}</strong>
-      </a>
     }
+
+    @if (study.card; as card) {
+      <figure class="wide">
+        <img [src]="card.src" [alt]="card.alt" [width]="card.width" [height]="card.height" />
+        <figcaption>{{ card.caption }}</figcaption>
+      </figure>
+      @if (study.cardFiles?.length) {
+        <div class="prose files-block">
+          <p class="print-note">Print files, 85 × 55 mm with bleed.</p>
+          <ul class="files">
+            @for (file of study.cardFiles; track file.href) {
+              <li><a [href]="file.href" download>{{ file.label }}</a></li>
+            }
+          </ul>
+        </div>
+      }
+    }
+
+    <nav class="pager" aria-label="Other projects">
+      @if (previous(); as previous) {
+        <a [routerLink]="['/work', previous.id]" data-cursor="View">
+          <span>Previous</span>
+          <strong>{{ previous.name }}</strong>
+        </a>
+      }
+      @if (next(); as next) {
+        <a class="is-next" [routerLink]="['/work', next.id]" data-cursor="View">
+          <span>Next</span>
+          <strong>{{ next.name }}</strong>
+        </a>
+      }
+    </nav>
   </article>
   <app-site-footer />
 } @else {
-  <section class="missing" id="top">
+  <section class="story missing" id="top">
     <h1>That project is not in the list.</h1>
-    <a routerLink="/" fragment="work">Back to work</a>
+    <a class="back" routerLink="/" fragment="work">Selected work</a>
   </section>
   <app-site-footer />
 }

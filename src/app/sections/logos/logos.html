@@ -1,79 +1,29 @@
-<section class="logos" id="logos" aria-labelledby="logos-heading">
+<section class="logos" id="work" aria-labelledby="work-heading">
   <header class="intro">
-    <p class="index">02 — Logos</p>
-    <h2 id="logos-heading">Marks</h2>
-    <p class="lede">
-      Thirteen logos. Client work, concepts, and ventures of my own. Open one for the case study.
-    </p>
+    <p class="index">03 — Work</p>
+    <h2 id="work-heading">Selected work</h2>
+    <p class="lede">Logos, websites, and apps. Each one opens as its own case study.</p>
   </header>
 
-  <ul class="grid">
-    @for (logo of logos; track logo.id) {
-      <li>
-        <button type="button" class="tile" (click)="open(logo)">
-          <app-logo-mark class="tile-mark" [name]="logo.file" />
-          <span class="name">{{ logo.name }}</span>
-          <span class="tag">{{ logo.tag }}</span>
-        </button>
-      </li>
-    }
-  </ul>
-
-  @if (active(); as logo) {
-    <div class="overlay" #overlayEl (click)="close()">
-      <div
-        #dialogEl
-        class="dialog"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="case-title"
-        (click)="$event.stopPropagation()"
-      >
-        <div class="dialog-bar">
-          <p id="case-title" class="case-kicker">Case study</p>
-          <button #closeBtn type="button" class="close" (click)="close()">Close</button>
-        </div>
-        <app-logo-mark class="case-mark" [name]="logo.file" />
-        <h3 class="case-name">{{ logo.name }}</h3>
-        <p class="tag">{{ logo.tag }}</p>
-        <p class="description">{{ logo.description }}</p>
-        @if (logo.caseSlug) {
-          <a class="study-link" [routerLink]="['/work', logo.caseSlug]" (click)="close()">
-            View the full case study
-          </a>
+  @for (group of groups; track group.id) {
+    <section class="group" [attr.aria-labelledby]="'group-' + group.id">
+      <h3 [id]="'group-' + group.id">{{ group.title }}</h3>
+      <ul class="grid">
+        @for (logo of group.items; track logo.id) {
+          <li>
+            <a class="tile" [routerLink]="['/work', logo.id]" data-cursor="View">
+              <app-logo-mark class="tile-mark" [name]="logo.file" [label]="logo.name" />
+              <span class="name">{{ logo.name }}</span>
+              <span class="meta-row">
+                <span class="tag">{{ logo.tag }}</span>
+                @if (chip[logo.id]; as label) {
+                  <span class="discipline">{{ label }}</span>
+                }
+              </span>
+            </a>
+          </li>
         }
-
-        <h4>Mockups</h4>
-        <ul class="gallery">
-          @for (shot of logo.mockups; track shot.src) {
-            <li>
-              <figure>
-                <img [src]="shot.src" [alt]="shot.alt" [width]="shot.width" [height]="shot.height" />
-                <figcaption>{{ shot.caption }}</figcaption>
-              </figure>
-            </li>
-          }
-        </ul>
-
-        @if (logo.card) {
-          <h4>Business card</h4>
-          <figure class="card-shot">
-            <img
-              [src]="logo.card.src"
-              [alt]="logo.card.alt"
-              [width]="logo.card.width"
-              [height]="logo.card.height"
-            />
-            <figcaption>{{ logo.card.caption }}</figcaption>
-          </figure>
-          <p class="print-note">Template card, 85 × 55 mm, with 3 mm bleed. The name on it is a placeholder.</p>
-          <ul class="files">
-            @for (file of logo.cardFiles; track file.href) {
-              <li><a [href]="file.href" download>{{ file.label }}</a></li>
-            }
-          </ul>
-        }
-      </div>
-    </div>
+      </ul>
+    </section>
   }
 </section>
