@@ -15,26 +15,6 @@ export interface Fact {
   value: string;
 }
 
-export type ServiceTheme = 'paper' | 'forest' | 'mango';
-
-export interface ServiceImage {
-  src?: string;
-  alt: string;
-  fit?: 'contain';
-  mark?: string;
-}
-
-export interface Service {
-  id: string;
-  index: string;
-  kicker: string;
-  title: string;
-  summary: string;
-  points: string[];
-  theme: ServiceTheme;
-  images: ServiceImage[];
-}
-
 export interface ProcessStep {
   index: string;
   title: string;
@@ -73,7 +53,6 @@ export interface SiteContent {
     pull: string[];
     facts: Fact[];
   };
-  services: Service[];
   work: {
     title: string[];
     lede: string;
@@ -125,7 +104,6 @@ export const site: SiteContent = {
   ],
   nav: [
     { label: 'About', fragment: 'about' },
-    { label: 'Services', fragment: 'services' },
     { label: 'Work', fragment: 'work' },
     { label: 'Process', fragment: 'process' },
     { label: 'Contact', fragment: 'contact' },
@@ -154,72 +132,6 @@ export const site: SiteContent = {
       { label: 'Based in', value: 'Midrand, Gauteng, 1685' },
     ],
   },
-  services: [
-    {
-      id: 'logo',
-      index: '01',
-      kicker: 'Branding',
-      title: 'Logo design',
-      summary:
-        'I make marks that have to work at favicon size and on a shelf. Logos, wordmarks, colour, type, and a short set of rules a team can follow.',
-      points: ['Logos', 'Colour', 'Type', 'Brand rules'],
-      theme: 'paper',
-      images: [
-        { mark: 'fried-corner', alt: 'Fried Corner logo', fit: 'contain' },
-        { mark: 'viga', alt: 'Viga logo', fit: 'contain' },
-        { mark: 'broilerbliss', alt: 'BroilerBliss logo', fit: 'contain' },
-        { mark: 'hetchfund', alt: 'Hetchfund logo', fit: 'contain' },
-      ],
-    },
-    {
-      id: 'web',
-      index: '02',
-      kicker: 'Sites',
-      title: 'Web design',
-      summary:
-        'I design and build websites and product UI with a clear job. Structure first, then type, then motion that explains something. In Angular and TypeScript, the page you approve is the page that ships.',
-      points: ['Web design', 'UI', 'Angular', 'TypeScript'],
-      theme: 'forest',
-      images: [
-        {
-          src: 'work/hetchfund/ui-hero.jpg',
-          alt: 'Hetchfund homepage hero',
-        },
-        {
-          src: 'work/hetchfund/ui-flow.jpg',
-          alt: 'Hetchfund how-it-works section',
-        },
-        {
-          src: 'work/hetchfund/ui-board.jpg',
-          alt: 'Hetchfund page section with verification and learning tools',
-        },
-      ],
-    },
-    {
-      id: 'apps',
-      index: '03',
-      kicker: 'Products',
-      title: 'App development',
-      summary:
-        'I build interfaces in Angular, TypeScript, and JavaScript, services in Node.js or Python, and data in SQL or MongoDB. Work you can use, and the next developer can read.',
-      points: ['Node.js', 'Python', 'SQL', 'MongoDB'],
-      theme: 'mango',
-      images: [
-        {
-          src: 'work/hetchfund/ui-flow.jpg',
-          alt: 'Hetchfund product flow on the marketing site',
-        },
-        {
-          src: 'work/hetchfund/ui-board.jpg',
-          alt: 'Hetchfund product sections for verification and AI tools',
-        },
-        {
-          src: 'work/hetchfund/ui-hero.jpg',
-          alt: 'Hetchfund product homepage',
-        },
-      ],
-    },
-  ],
   work: {
     title: ['Selected', 'work'],
     lede: 'Two studies: a farm brand, and a crowdfunding platform I designed and built.',
