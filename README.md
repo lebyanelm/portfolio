@@ -100,14 +100,14 @@ npx netlify deploy --prod --dir=dist/libby/browser
 
 ### GitHub Pages
 
-`.github/workflows/pages.yml` runs on every push to `main`. It builds with `--base-href /dev-canvas/`, copies `index.html` to `404.html` (so GitHub Pages still serves the app on unknown paths), adds `.nojekyll`, and deploys `dist/libby/browser`.
+`.github/workflows/pages.yml` runs on every push to `main`. It builds with `--base-href /portfolio/`, copies `index.html` to `404.html` (so GitHub Pages still serves the app on unknown paths), adds `.nojekyll`, and deploys `dist/libby/browser`.
 
-The live site is [https://lebyanelm.github.io/dev-canvas/](https://lebyanelm.github.io/dev-canvas/).
+The live site is [https://lebyanelm.github.io/portfolio/](https://lebyanelm.github.io/portfolio/).
 
 Pages has to use **GitHub Actions** as the source, not a branch:
 
 ```bash
-gh api -X POST repos/lebyanelm/dev-canvas/pages -f build_type=workflow
+gh api -X POST repos/lebyanelm/portfolio/pages -f build_type=workflow
 ```
 
 A free GitHub account can publish Pages only from a **public** repository. A private repository needs GitHub Pro. Do not expect a private deploy to come up on a free plan.

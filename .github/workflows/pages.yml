@@ -33,8 +33,8 @@ jobs:
       - name: Build
         env:
           NG_CLI_ANALYTICS: "false"
-        # Project site https://lebyanelm.github.io/dev-canvas/
-        run: npx ng build --base-href /dev-canvas/
+        # Project site https://lebyanelm.github.io/portfolio/
+        run: npx ng build --base-href /portfolio/
 
       - name: SPA fallback and Jekyll bypass
         run: |
